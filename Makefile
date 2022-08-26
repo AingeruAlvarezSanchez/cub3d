@@ -4,7 +4,7 @@ NAME = cub3d
 # COMPILATION RELATED VARIABLES #
 CC = clang
 RM = rm -rf
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra -g3 #-fsanitize=address
 SANITIZE = -fsanitize=address
 #################################
 
@@ -16,7 +16,9 @@ FRAMEWORK = -framework OpenGL -framework AppKit
 
 #### FILES RELATED VARIABLES ####
 INCLUDE = -I include/
-FILES = srcs/cubed.c	\
+FILES = srcs/cubed.c			\
+		srcs/errors.c			\
+		srcs/get_next_line.c	\
 
 OBJS = $(FILES:%.c=%.o)
 #################################

@@ -11,26 +11,24 @@
 /* ************************************************************************** */
 
 #include "cubed.h"
-#include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
-
-int	ft_input_errors(int argc, char *file)
-{
-	if (argc == 1)
-		return (printf("Error : %s\n", strerror(22)));
-	if (argc > 2)
-		return (printf("Error : %s\n", strerror(7)));
-	if (ft_checkext(file, ".cub"))
-		return (printf("Error : %s\n", strerror(22)));
-	if (ft_checkfile(file))
-		return (perror("Error "), 1);
-	return (0);
-}
+#include <fcntl.h>
+#include <unistd.h>
 
 int	main(int argc, char **argv)
 {
+	t_info	info;
+
 	if (ft_input_errors(argc, argv[1]))
 		return (1);
+	info.file_fd = open(argv[1], O_RDONLY);
+	info.file_size = ft_getfile_size(info.file_fd);
+	close(info.file_fd);
+	if (!info.file_size)
+		return (1);
+	info.file = ft_strdup(argv[1]);
+	info.file_fd = open(info.file, O_RDONLY);
+	if (ft_file_errors(&info))
+		return (free(info.file), 1);
 	return (0);
 }

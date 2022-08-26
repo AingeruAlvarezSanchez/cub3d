@@ -15,4 +15,18 @@
 
 # include "Libft_extended/libft.h"
 
+typedef struct s_info
+{
+	int		file_fd;
+	int		file_size;
+	char	*file;
+}	t_info;
+
+/* User input errors */
+int		ft_input_errors(int argc, char *file);
+int		ft_file_errors(t_info *info);
+
+//TODO change get_next_line place in the program
+char	*ft_get_next_line(int fd);
+
 #endif
