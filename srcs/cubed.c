@@ -14,10 +14,12 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 	t_info	info;
+	t_data	data;
 
 	if (ft_input_errors(argc, argv[1]))
 		return (1);
@@ -28,7 +30,9 @@ int	main(int argc, char **argv)
 		return (1);
 	info.file = ft_strdup(argv[1]);
 	info.file_fd = open(info.file, O_RDONLY);
-	if (ft_file_errors(&info))
-		return (free(info.file), 1);
+	if (ft_file_errors(&info, &data))
+		return (close(info.file_fd), free(info.file), 1);
+	close(info.file_fd);
+	ft_freedata(&data);
 	return (0);
 }

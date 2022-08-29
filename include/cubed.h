@@ -22,11 +22,24 @@ typedef struct s_info
 	char	*file;
 }	t_info;
 
+typedef struct s_data
+{
+	char	*north_texture;
+	char	*south_texture;
+	char	*east_texture;
+	char	*west_texture;
+}	t_data;
+
 /* User input errors */
 int		ft_input_errors(int argc, char *file);
-int		ft_file_errors(t_info *info);
+int		ft_file_errors(t_info *info, t_data *data);
 
 //TODO change get_next_line place in the program
 char	*ft_get_next_line(int fd);
+
+/* Different general utilities functions */
+void	ft_freedata(t_data *data);
+void	ft_init_data(t_data *data);
+void 	ft_trim_data(t_data *data);
 
 #endif

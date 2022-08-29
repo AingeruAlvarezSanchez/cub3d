@@ -18,6 +18,7 @@ FRAMEWORK = -framework OpenGL -framework AppKit
 INCLUDE = -I include/
 FILES = srcs/cubed.c			\
 		srcs/errors.c			\
+		srcs/utils.c			\
 		srcs/get_next_line.c	\
 
 OBJS = $(FILES:%.c=%.o)
