@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:45:21 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/08/31 02:53:55 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/08/31 23:04:57 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	ft_isvalid_route(char *line)
 					return (free(tmp), 1);
 				i++;
 			}
+			break ;
 		}
 	}
 	return (free(tmp), 0);
@@ -99,13 +100,41 @@ int	ft_fill_data(t_data *data, char *line)
 	return (0);
 }
 
+int	ft_syntax_errors(char **file)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (file[++i])
+	{
+		if (*file[i] == '1')
+		{
+			j = -1;
+			while (file[i][++j])
+				if (!ft_chr_in_set(file[i][j], "10NSWE \0"))
+					return (1);
+		}
+	}
+	return (0);
+}
+
 int	ft_invalidmap_line(char **file_content)
 {
-	//WIP
-	//WIP
-	//WIP
-	//WIP
-	//WIP
+	char	**tmp;
+	int		i;
+	
+	tmp = (char **)malloc(sizeof(char *) * (ft_doublestrlen((const char **)file_content) + 1));
+	if (!tmp)
+		return (1);
+	i = -1;
+	while (file_content[++i])
+		tmp[i] = ft_strtrim(file_content[i], " \n");
+	tmp[i] = 0;
+	if (ft_syntax_errors(tmp))
+		return (1);
+	ft_doublefree(tmp);
+	return (0);
 }
 
 static int	ft_isvalid_file(t_data *data, char **file_content)

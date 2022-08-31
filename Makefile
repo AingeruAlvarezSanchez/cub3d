@@ -4,7 +4,7 @@ NAME = cub3d
 # COMPILATION RELATED VARIABLES #
 CC = clang
 RM = rm -rf
-CFLAGS = -Wall -Werror -Wextra -g3 #-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
 SANITIZE = -fsanitize=address
 #################################
 
