@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:59:47 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 16:59:52 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/08/31 02:50:12 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ char	*ft_get_next_line(int fd);
 /* Different general utilities functions */
 void	ft_freedata(t_data *data);
 void	ft_init_data(t_data *data);
-void 	ft_trim_data(t_data *data);
+void	ft_trim_data(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:45:21 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/08/26 17:45:25 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/08/31 02:53:55 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,24 +99,13 @@ int	ft_fill_data(t_data *data, char *line)
 	return (0);
 }
 
-int ft_invalidmap_line(char **file_content)
+int	ft_invalidmap_line(char **file_content)
 {
-	char	**tmp;
-	int 	i;
-
-	tmp = (char **)malloc(sizeof(char *) * (ft_doublestrlen(tmp) + 1));
-	if (!tmp)
-		return (1);
-	i = -1;
-	while (file[++i])
-		tmp[i] = ft_strtrim(file[i], " \n");
-	tmp[i] = 0;
-	i = -1;
-	while (tmp[++i])
-	{
-		if (**tmp == 1)
-	}
-	return (0);
+	//WIP
+	//WIP
+	//WIP
+	//WIP
+	//WIP
 }
 
 static int	ft_isvalid_file(t_data *data, char **file_content)
@@ -126,11 +115,8 @@ static int	ft_isvalid_file(t_data *data, char **file_content)
 	i = -1;
 	ft_init_data(data);
 	while (file_content[++i])
-	{
-		printf("line: %s", file_content[i]);
 		if (ft_fill_data(data, file_content[i]))
 			return (1);
-	}
 	if (!data->north_texture || !data->south_texture
 		|| !data->west_texture || !data->east_texture)
 		return (1);

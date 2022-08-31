@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/31 02:48:49 by aalvarez          #+#    #+#             */
+/*   Updated: 2022/08/31 02:49:41 by aalvarez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cubed.h"
 #include <stdlib.h>
 
@@ -16,9 +28,10 @@ void	ft_init_data(t_data *data)
 	data->west_texture = NULL;
 	data->east_texture = NULL;
 }
-void 	ft_trim_data(t_data *data)
+
+void	ft_trim_data(t_data *data)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = ft_strdup(data->north_texture);
 	free(data->north_texture);
