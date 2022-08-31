@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:45:21 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/01 00:20:18 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/01 00:23:57 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 static int	ft_isvalid_content(const char *line)
 {
@@ -182,7 +183,12 @@ static int	ft_isvalid_file(t_data *data, char **file_content)
 	if (ft_invalidmap_line(file_content))
 		return (1);
 	ft_trim_data(data);
-	printf("\n%s\n%s\n%s\n%s\n", data->north_texture, data->south_texture, data->west_texture, data->east_texture); //TODO trim the paths with space and newline
+	printf("\n%s\n%s\n%s\n%s\n", data->north_texture, data->south_texture, data->west_texture, data->east_texture);
+	if (open(data->north_texture, O_RDONLY) < 0
+	|| open(data->south_texture, O_RDONLY) < 0
+	|| open(data->west_texture, O_RDONLY) < 0
+	|| open(data->east_texture, O_RDONLY) < 0)
+		return (perror("Error "), 1);
 	return (0);
 }
 
