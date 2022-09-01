@@ -16,10 +16,12 @@ FRAMEWORK = -framework OpenGL -framework AppKit
 
 #### FILES RELATED VARIABLES ####
 INCLUDE = -I include/
-FILES = srcs/cubed.c			\
-		srcs/errors.c			\
-		srcs/utils.c			\
-		srcs/get_next_line.c	\
+FILES = srcs/cubed.c					\
+		srcs/errors.c					\
+		srcs/map_initial_errors.c		\
+		srcs/textures_initial_errors.c	\
+		srcs/utils.c					\
+		srcs/get_next_line.c			\
 
 OBJS = $(FILES:%.c=%.o)
 #################################
