@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:38:28 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 00:27:28 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 01:20:29 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	info.file_fd = open(info.file, O_RDONLY);
 	if (ft_file_errors(&info, &data, &color))
 		return (close(info.file_fd), free(info.file), 1);
-	printf("\n%s\n%s\n%s\n%s\n", data.north_texture, data.south_texture, data.west_texture, data.east_texture);
+	printf("\nTextures:\n%s\n%s\n%s\n%s\n", data.north_texture, data.south_texture, data.west_texture, data.east_texture);
 	close(info.file_fd);
 	ft_freedata(&data);
 	return (0);

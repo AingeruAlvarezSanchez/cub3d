@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:59:47 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 00:26:08 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 01:12:48 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 	char	*south_texture;
 	char	*east_texture;
 	char	*west_texture;
+	char	**map;
 }	t_data;
 
 /* User input errors */
@@ -44,6 +45,7 @@ int		ft_input_errors(int argc, char *file);
 int		ft_file_errors(t_info *info, t_data *data, t_color *color);
 int		ft_fill_data(t_data *data, char *line);
 int		ft_invalidmap_line(char **file_content);
+int		ft_create_map(t_data *data, char **file_content);
 int		ft_invalidcolor_line(t_color *color, char **file_content);
 
 //TODO change get_next_line place in the program

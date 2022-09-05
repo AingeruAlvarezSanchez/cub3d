@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 02:48:49 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 00:25:14 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 00:52:47 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_freedata(t_data *data)
 	free(data->south_texture);
 	free(data->west_texture);
 	free(data->east_texture);
+	ft_doublefree(data->map);
 }
 
 void	ft_init_structs(t_data *data, t_color *color)
@@ -27,6 +28,7 @@ void	ft_init_structs(t_data *data, t_color *color)
 	data->south_texture = NULL;
 	data->west_texture = NULL;
 	data->east_texture = NULL;
+	data->map = NULL;
 	color->ceiling_integer = -1;
 	color->floor_integer = -1;
 }

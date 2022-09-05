@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:45:21 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 00:25:25 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 01:17:20 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,16 @@ static int	ft_isvalid_line(const char *line)
 	return (0);
 }
 
+int	ft_parse_map(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (data->map[++i])
+		printf("map: %s", data->map[i]);
+	return (0);
+}
+
 static int	ft_isvalid_file(t_data *data, t_color *color, char **file_content)
 {
 	int	i;
@@ -71,6 +81,8 @@ static int	ft_isvalid_file(t_data *data, t_color *color, char **file_content)
 		|| open(data->west_texture, O_RDONLY) < 0
 		|| open(data->east_texture, O_RDONLY) < 0)
 		return (perror("Error "), 1);
+	if (ft_create_map(data, file_content) || ft_parse_map(data))
+		return (1);
 	return (0);
 }
 

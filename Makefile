@@ -19,6 +19,7 @@ INCLUDE = -I include/
 FILES = srcs/cubed.c					\
 		srcs/errors.c					\
 		srcs/map_initial_errors.c		\
+		srcs/create_map.c				\
 		srcs/textures_initial_errors.c	\
 		srcs/color_initial_errors.c		\
 		srcs/utils.c					\
