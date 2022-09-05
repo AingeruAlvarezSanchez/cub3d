@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 01:05:27 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 00:27:08 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 01:20:45 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #include <stdlib.h>
 
 #include <stdio.h>
-static void	ft_fill_hexa_value(t_color *color)
+static void	ft_create_trgb(t_color *color)
 {
-	printf("%X\n", color->color_r); //TODO check why minilib asks for an int but displays an hexadecimal number (char *)
+	//TODO get int values for full trgb for minilib 
+	printf("R: %d\n", color->color_r);
+	printf("G: %d\n", color->color_g);
+	printf("B: %d\n\n", color->color_b);
 }
 
 static int	ft_check_rgb_value(t_color *color, char *line, int color_len)
@@ -42,7 +45,7 @@ static int	ft_check_rgb_value(t_color *color, char *line, int color_len)
 	{
 		color->color_b = ft_atoi(tmp);
 		rgb_checker = -1;
-		ft_fill_hexa_value(color);
+		ft_create_trgb(color);
 	}
 	return (color_start += color_len + 1, rgb_checker++, free(tmp), 0);
 }
