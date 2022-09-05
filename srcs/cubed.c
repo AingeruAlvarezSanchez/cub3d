@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:38:28 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/01 20:26:48 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 00:27:28 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 {
 	t_info	info;
 	t_data	data;
+	t_color	color;
 
 	if (ft_input_errors(argc, argv[1]))
 		return (1);
@@ -30,7 +31,7 @@ int	main(int argc, char **argv)
 		return (1);
 	info.file = ft_strdup(argv[1]);
 	info.file_fd = open(info.file, O_RDONLY);
-	if (ft_file_errors(&info, &data))
+	if (ft_file_errors(&info, &data, &color))
 		return (close(info.file_fd), free(info.file), 1);
 	printf("\n%s\n%s\n%s\n%s\n", data.north_texture, data.south_texture, data.west_texture, data.east_texture);
 	close(info.file_fd);

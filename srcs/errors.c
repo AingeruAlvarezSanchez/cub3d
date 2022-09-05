@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:45:21 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/05 02:13:57 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 00:25:25 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ static int	ft_isvalid_line(const char *line)
 	return (0);
 }
 
-static int	ft_isvalid_file(t_data *data, char **file_content)
+static int	ft_isvalid_file(t_data *data, t_color *color, char **file_content)
 {
 	int	i;
 
 	i = -1;
-	ft_init_data(data);
+	ft_init_structs(data, color);
 	while (file_content[++i])
 		if (ft_fill_data(data, file_content[i]))
 			return (1);
@@ -63,7 +63,7 @@ static int	ft_isvalid_file(t_data *data, char **file_content)
 		return (1);
 	if (ft_invalidmap_line(file_content))
 		return (1);
-	if (ft_invalidcolor_line(data, file_content))
+	if (ft_invalidcolor_line(color, file_content))
 		return (1);
 	ft_trim_data(data);
 	if (open(data->north_texture, O_RDONLY) < 0
@@ -74,7 +74,7 @@ static int	ft_isvalid_file(t_data *data, char **file_content)
 	return (0);
 }
 
-int	ft_file_errors(t_info *info, t_data *data)
+int	ft_file_errors(t_info *info, t_data *data, t_color *color)
 {
 	char	**file_content;
 	int		i;
@@ -94,7 +94,7 @@ int	ft_file_errors(t_info *info, t_data *data)
 		}
 	}
 	file_content[i] = 0;
-	if (ft_isvalid_file(data, file_content))
+	if (ft_isvalid_file(data, color, file_content))
 		return (ft_freedata(data), ft_doublefree(file_content),
 			printf("Error : %s\n", strerror(22)));
 	return (free(info->file), ft_doublefree(file_content), 0);

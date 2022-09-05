@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 01:05:27 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/05 02:31:39 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/06 00:27:08 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <stdlib.h>
 
 #include <stdio.h>
-static void	ft_fill_hexa_value(t_data *data)
+static void	ft_fill_hexa_value(t_color *color)
 {
-	printf("%X\n", data->color_r); //TODO check why minilib asks for an int but displays an hexadecimal number (char *)
+	printf("%X\n", color->color_r); //TODO check why minilib asks for an int but displays an hexadecimal number (char *)
 }
 
-static int	ft_check_rgb_value(t_data *data, char *line, int color_len)
+static int	ft_check_rgb_value(t_color *color, char *line, int color_len)
 {
 	static int	color_start;
 	static int	rgb_checker;
@@ -35,19 +35,19 @@ static int	ft_check_rgb_value(t_data *data, char *line, int color_len)
 	if (ft_atoi(tmp) > 255 || ft_atoi(tmp) < 0)
 		return (free(tmp), 1);
 	if (rgb_checker == 0)
-		data->color_r = ft_atoi(tmp);
+		color->color_r = ft_atoi(tmp);
 	else if (rgb_checker == 1)
-		data->color_g = ft_atoi(tmp);
+		color->color_g = ft_atoi(tmp);
 	else if (rgb_checker == 2)
 	{
-		data->color_b = ft_atoi(tmp);
+		color->color_b = ft_atoi(tmp);
 		rgb_checker = -1;
-		ft_fill_hexa_value(data);
+		ft_fill_hexa_value(color);
 	}
 	return (color_start += color_len + 1, rgb_checker++, free(tmp), 0);
 }
 
-static int	ft_check_color_values(t_data *data, char *line)
+static int	ft_check_color_values(t_color *color, char *line)
 {
 	int	i;
 	int	color_len;
@@ -66,7 +66,7 @@ static int	ft_check_color_values(t_data *data, char *line)
 			color_n++;
 			if (color_n > 3 || color_len > 3)
 				return (free(line), 1);
-			if (ft_check_rgb_value(data, line, color_len))
+			if (ft_check_rgb_value(color, line, color_len))
 				return (free(line), 1);
 			color_len = -1;
 		}
@@ -74,7 +74,7 @@ static int	ft_check_color_values(t_data *data, char *line)
 	return (free(line), 0);
 }
 
-int	ft_invalidcolor_line(t_data *data, char **file_content)
+int	ft_invalidcolor_line(t_color *color, char **file_content)
 {
 	char	*tmp;
 	int		i;
@@ -85,16 +85,16 @@ int	ft_invalidcolor_line(t_data *data, char **file_content)
 		tmp = ft_strtrim(file_content[i], " \n");
 		if (*tmp == 'F')
 		{
-			if (data->ceiling_integer != -1)
+			if (color->ceiling_integer != -1)
 				return (free(tmp), 1);
-			if (ft_check_color_values(data, ft_strtrim(tmp, "F ")))
+			if (ft_check_color_values(color, ft_strtrim(tmp, "F ")))
 				return (free(tmp), 1);
 		}
 		if (*tmp == 'C')
 		{
-			if (data->floor_integer != -1)
+			if (color->floor_integer != -1)
 				return (free(tmp), 1);
-			if (ft_check_color_values(data, ft_strtrim(tmp, "C ")))
+			if (ft_check_color_values(color, ft_strtrim(tmp, "C ")))
 				return (free(tmp), 1);
 		}
 		free(tmp);
