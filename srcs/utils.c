@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 02:48:49 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/08/31 02:49:41 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/05 02:13:57 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ft_init_data(t_data *data)
 	data->south_texture = NULL;
 	data->west_texture = NULL;
 	data->east_texture = NULL;
+	data->ceiling_integer = -1;
+	data->floor_integer = -1;
 }
 
 void	ft_trim_data(t_data *data)

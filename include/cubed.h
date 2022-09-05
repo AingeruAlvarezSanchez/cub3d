@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:59:47 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/01 20:23:48 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/05 02:10:18 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ typedef struct s_data
 	char	*south_texture;
 	char	*east_texture;
 	char	*west_texture;
+	int		ceiling_integer;
+	int		floor_integer;
+	int		color_r;
+	int		color_g;
+	int		color_b;
 }	t_data;
 
 /* User input errors */
@@ -35,6 +40,7 @@ int		ft_input_errors(int argc, char *file);
 int		ft_file_errors(t_info *info, t_data *data);
 int		ft_fill_data(t_data *data, char *line);
 int		ft_invalidmap_line(char **file_content);
+int		ft_invalidcolor_line(t_data *data, char **file_content);
 
 //TODO change get_next_line place in the program
 char	*ft_get_next_line(int fd);

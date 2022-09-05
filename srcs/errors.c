@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:45:21 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/01 20:26:22 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/05 02:13:57 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static int	ft_isvalid_file(t_data *data, char **file_content)
 		|| !data->west_texture || !data->east_texture)
 		return (1);
 	if (ft_invalidmap_line(file_content))
+		return (1);
+	if (ft_invalidcolor_line(data, file_content))
 		return (1);
 	ft_trim_data(data);
 	if (open(data->north_texture, O_RDONLY) < 0

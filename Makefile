@@ -20,6 +20,7 @@ FILES = srcs/cubed.c					\
 		srcs/errors.c					\
 		srcs/map_initial_errors.c		\
 		srcs/textures_initial_errors.c	\
+		srcs/color_initial_errors.c		\
 		srcs/utils.c					\
 		srcs/get_next_line.c			\
 
