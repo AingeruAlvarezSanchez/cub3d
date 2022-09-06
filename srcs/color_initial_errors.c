@@ -6,14 +6,14 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 01:05:27 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 01:20:45 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/07 00:54:02 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubed.h"
 #include <stdlib.h>
 
-#include <stdio.h>
+#include <stdio.h> //TODO remove this include
 static void	ft_create_trgb(t_color *color)
 {
 	//TODO get int values for full trgb for minilib 

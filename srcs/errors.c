@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:45:21 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 01:17:20 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/07 00:53:20 by aalvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,38 +49,6 @@ static int	ft_isvalid_line(const char *line)
 	return (0);
 }
 
-static int	ft_map_limits(t_data *data)
-{
-	int	i;
-
-	i = -1;
-	while (data->map[0][++i])
-		if (!ft_chr_in_set(data->map[0][i], " 1\n"))
-			return (1);
-	i = -1;
-	while (data->map[ft_doublestrlen((const char **)data->map) - 1][++i])
-		if (!ft_chr_in_set(data->map
-				[ft_doublestrlen((const char **)data->map) - 1][++i], " 1\n"))
-			return (1);
-	i = -1;
-	while (data->map[++i])
-		if (!ft_chr_in_set(data->map[i][ft_strlen(data->map[i]) - 2], " 1\n"))
-			return (1);
-	return (0);
-}
-
-int	ft_parse_map(t_data *data)
-{
-	int	i;
-
-	if (ft_map_limits(data))
-		return (1);
-	i = -1;
-	while (data->map[++i])
-		printf("map: %s", data->map[i]);
-	return (0);
-}
-
 static int	ft_isvalid_file(t_data *data, t_color *color, char **file_content)
 {
 	int	i;
@@ -103,7 +71,7 @@ static int	ft_isvalid_file(t_data *data, t_color *color, char **file_content)
 		|| open(data->west_texture, O_RDONLY) < 0
 		|| open(data->east_texture, O_RDONLY) < 0)
 		return (perror("Error "), 1);
-	if (ft_create_map(data, file_content) || ft_parse_map(data))
+	if (ft_create_map(data, file_content))
 		return (1);
 	return (0);
 }

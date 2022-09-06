@@ -33,7 +33,6 @@ int	main(int argc, char **argv)
 	info.file_fd = open(info.file, O_RDONLY);
 	if (ft_file_errors(&info, &data, &color))
 		return (close(info.file_fd), free(info.file), 1);
-	printf("\nTextures:\n%s\n%s\n%s\n%s\n", data.north_texture, data.south_texture, data.west_texture, data.east_texture);
 	close(info.file_fd);
 	ft_freedata(&data);
 	return (0);
