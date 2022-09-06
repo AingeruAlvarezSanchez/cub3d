@@ -59,7 +59,7 @@ int	ft_create_map(t_data *data, char **file_content)
 	int		i;
 	int		j;
 	char	*tmp;
-	
+
 	if (ft_map_size(file_content) == -1)
 		return (1);
 	data->map = (char **)ft_calloc((ft_map_size(file_content) + 1),

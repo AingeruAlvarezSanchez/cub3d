@@ -49,10 +49,32 @@ static int	ft_isvalid_line(const char *line)
 	return (0);
 }
 
+static int	ft_map_limits(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (data->map[0][++i])
+		if (!ft_chr_in_set(data->map[0][i], " 1\n"))
+			return (1);
+	i = -1;
+	while (data->map[ft_doublestrlen((const char **)data->map) - 1][++i])
+		if (!ft_chr_in_set(data->map
+				[ft_doublestrlen((const char **)data->map) - 1][++i], " 1\n"))
+			return (1);
+	i = -1;
+	while (data->map[++i])
+		if (!ft_chr_in_set(data->map[i][ft_strlen(data->map[i]) - 2], " 1\n"))
+			return (1);
+	return (0);
+}
+
 int	ft_parse_map(t_data *data)
 {
 	int	i;
 
+	if (ft_map_limits(data))
+		return (1);
 	i = -1;
 	while (data->map[++i])
 		printf("map: %s", data->map[i]);
