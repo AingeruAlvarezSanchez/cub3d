@@ -41,26 +41,26 @@ int	ft_fill_data(t_data *data, char *line)
 	if (!ft_strncmp(line, "NO", 2))
 	{
 		if (data->north_texture || ft_isvalid_route(line))
-			return (1);
+			return (free(line), 1);
 		data->north_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
 	}
 	if (!ft_strncmp(line, "SO", 2))
 	{
 		if (data->south_texture || ft_isvalid_route(line))
-			return (1);
+			return (free(line), 1);
 		data->south_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
 	}
 	if (!ft_strncmp(line, "WE", 2))
 	{
 		if (data->west_texture || ft_isvalid_route(line))
-			return (1);
+			return (free(line), 1);
 		data->west_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
 	}
 	if (!ft_strncmp(line, "EA", 2))
 	{
 		if (data->east_texture || ft_isvalid_route(line))
-			return (1);
+			return (free(line), 1);
 		data->east_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
 	}
-	return (0);
+	return (free(line), 0);
 }

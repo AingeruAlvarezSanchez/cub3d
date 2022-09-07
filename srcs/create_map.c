@@ -108,8 +108,6 @@ int	ft_create_map(t_data *data, char **file_content)
 		return (1);
 	data->map = (char **)ft_calloc((ft_map_size(file_content) + 1),
 			sizeof(char *));
-	if (!data->map)
-		return (1);
 	i = -1;
 	while (file_content[++i])
 	{
@@ -120,6 +118,7 @@ int	ft_create_map(t_data *data, char **file_content)
 			while (++j < ft_map_size(file_content))
 				data->map[j] = ft_strdup(file_content[i++]);
 			data->map[j] = 0;
+			break ;
 		}
 		free(tmp);
 	}

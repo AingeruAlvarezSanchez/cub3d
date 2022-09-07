@@ -56,7 +56,7 @@ static int	ft_isvalid_file(t_data *data, t_color *color, char **file_content)
 	i = -1;
 	ft_init_structs(data, color);
 	while (file_content[++i])
-		if (ft_fill_data(data, file_content[i]))
+		if (ft_fill_data(data, ft_strtrim(file_content[i], " \n")))
 			return (1);
 	if (!data->north_texture || !data->south_texture
 		|| !data->west_texture || !data->east_texture)
