@@ -13,13 +13,9 @@
 #include "cubed.h"
 #include <stdlib.h>
 
-#include <stdio.h> //TODO remove this include
 static void	ft_create_trgb(t_color *color)
 {
-	//TODO get int values for full trgb for minilib 
-	printf("R: %d\n", color->color_r);
-	printf("G: %d\n", color->color_g);
-	printf("B: %d\n\n", color->color_b);
+	//TODO all in data or in color??
 }
 
 static int	ft_check_rgb_value(t_color *color, char *line, int color_len)
@@ -62,12 +58,12 @@ static int	ft_check_color_values(t_color *color, char *line)
 	while (line[++i])
 	{
 		color_len++;
-		if (line[i] == ' ' || (!ft_isdigit(line[i]) && line[i] != ','))
+		if (!ft_isdigit(line[i]) && line[i] != ',')
 			return (free(line), 1);
 		if (line[i] == ',' || !line[i + 1])
 		{
 			color_n++;
-			if (color_n > 3 || color_len > 3)
+			if (color_n > 3 || color_len > 3 || (!line[i + 1] && color_n < 3))
 				return (free(line), 1);
 			if (ft_check_rgb_value(color, line, color_len))
 				return (free(line), 1);
