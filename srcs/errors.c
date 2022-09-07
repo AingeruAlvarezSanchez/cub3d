@@ -63,7 +63,7 @@ static int	ft_isvalid_file(t_data *data, t_color *color, char **file_content)
 		return (1);
 	if (ft_invalidmap_line(file_content))
 		return (1);
-	if (ft_invalidcolor_line(color, file_content))
+	if (ft_invalidcolor_line(data, color, file_content))
 		return (1);
 	ft_trim_data(data);
 	if (open(data->north_texture, O_RDONLY) < 0

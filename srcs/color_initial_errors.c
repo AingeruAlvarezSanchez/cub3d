@@ -13,9 +13,14 @@
 #include "cubed.h"
 #include <stdlib.h>
 
-static void	ft_create_trgb(t_color *color)
+static void	ft_create_trgb(t_data *data, t_color *color, int check)
 {
-	//TODO all in data or in color??
+	if (check == 1)
+		data->floor = 1 << 24 | color->color_r << 16
+			| color->color_g << 8 | color->color_b;
+	else
+		data->ceiling = 1 << 24 | color->color_r << 16
+					  | color->color_g << 8 | color->color_b;
 }
 
 static int	ft_check_rgb_value(t_color *color, char *line, int color_len)
@@ -41,12 +46,11 @@ static int	ft_check_rgb_value(t_color *color, char *line, int color_len)
 	{
 		color->color_b = ft_atoi(tmp);
 		rgb_checker = -1;
-		ft_create_trgb(color);
 	}
 	return (color_start += color_len + 1, rgb_checker++, free(tmp), 0);
 }
 
-static int	ft_check_color_values(t_color *color, char *line)
+static int	ft_color_values(t_data *data, t_color *color, char *line, int check)
 {
 	int	i;
 	int	color_len;
@@ -67,13 +71,15 @@ static int	ft_check_color_values(t_color *color, char *line)
 				return (free(line), 1);
 			if (ft_check_rgb_value(color, line, color_len))
 				return (free(line), 1);
+			if (color_n == 3)
+				ft_create_trgb(data, color, check);
 			color_len = -1;
 		}
 	}
 	return (free(line), 0);
 }
 
-int	ft_invalidcolor_line(t_color *color, char **file_content)
+int	ft_invalidcolor_line(t_data *data, t_color *color, char **file_content)
 {
 	char	*tmp;
 	int		i;
@@ -84,16 +90,16 @@ int	ft_invalidcolor_line(t_color *color, char **file_content)
 		tmp = ft_strtrim(file_content[i], " \n");
 		if (*tmp == 'F')
 		{
-			if (color->ceiling_integer != -1)
+			if (color->floor_integer != -1)
 				return (free(tmp), 1);
-			if (ft_check_color_values(color, ft_strtrim(tmp, "F ")))
+			if (ft_color_values(data, color, ft_strtrim(tmp, "F "), 1))
 				return (free(tmp), 1);
 		}
 		if (*tmp == 'C')
 		{
-			if (color->floor_integer != -1)
+			if (color->ceiling_integer != -1)
 				return (free(tmp), 1);
-			if (ft_check_color_values(color, ft_strtrim(tmp, "C ")))
+			if (ft_color_values(data, color, ft_strtrim(tmp, "C "), 2))
 				return (free(tmp), 1);
 		}
 		free(tmp);

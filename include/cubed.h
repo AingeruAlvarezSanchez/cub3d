@@ -38,6 +38,8 @@ typedef struct s_data
 	char	*east_texture;
 	char	*west_texture;
 	char	**map;
+	int 	floor;
+	int 	ceiling;
 }	t_data;
 
 /* User input errors */
@@ -46,7 +48,7 @@ int		ft_file_errors(t_info *info, t_data *data, t_color *color);
 int		ft_fill_data(t_data *data, char *line);
 int		ft_invalidmap_line(char **file_content);
 int		ft_create_map(t_data *data, char **file_content);
-int		ft_invalidcolor_line(t_color *color, char **file_content);
+int		ft_invalidcolor_line(t_data *data, t_color *color, char **file_content);
 
 //TODO change get_next_line place in the program
 char	*ft_get_next_line(int fd);

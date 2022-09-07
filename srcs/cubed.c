@@ -33,6 +33,13 @@ int	main(int argc, char **argv)
 	info.file_fd = open(info.file, O_RDONLY);
 	if (ft_file_errors(&info, &data, &color))
 		return (close(info.file_fd), free(info.file), 1);
+	//testing purposes
+	int check = -1;
+	while (data.map[++check])
+		printf("map: %s", data.map[check]);
+	printf("\ntextures:\nNO: %s\nSO: %s\nWE: %s\nEA: %s\n", data.north_texture, data.south_texture, data.west_texture, data.east_texture);
+	printf("\ncolor integer representation for mlx:\nfloor: %d\nceiling: %d\n", data.floor, data.ceiling);
+	//testing purposes
 	close(info.file_fd);
 	ft_freedata(&data);
 	return (0);
