@@ -62,7 +62,7 @@ static int	ft_check_color_values(t_color *color, char *line)
 	while (line[++i])
 	{
 		color_len++;
-		if (line[i] == ' ')
+		if (line[i] == ' ' || (!ft_isdigit(line[i]) && line[i] != ','))
 			return (free(line), 1);
 		if (line[i] == ',' || !line[i + 1])
 		{
