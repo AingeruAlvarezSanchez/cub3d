@@ -38,8 +38,8 @@ typedef struct s_data
 	char	*east_texture;
 	char	*west_texture;
 	char	**map;
-	int 	floor;
-	int 	ceiling;
+	int		floor;
+	int		ceiling;
 }	t_data;
 
 /* User input errors */

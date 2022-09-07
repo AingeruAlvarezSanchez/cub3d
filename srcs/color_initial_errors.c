@@ -20,7 +20,7 @@ static void	ft_create_trgb(t_data *data, t_color *color, int check)
 			| color->color_g << 8 | color->color_b;
 	else
 		data->ceiling = 1 << 24 | color->color_r << 16
-					  | color->color_g << 8 | color->color_b;
+			| color->color_g << 8 | color->color_b;
 }
 
 static int	ft_check_rgb_value(t_color *color, char *line, int color_len)
