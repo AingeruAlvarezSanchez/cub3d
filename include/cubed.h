@@ -15,12 +15,12 @@
 
 # include "Libft_extended/libft.h"
 
-typedef struct s_info
+typedef struct s_file
 {
 	int		file_fd;
 	int		file_size;
 	char	*file;
-}	t_info;
+}	t_file;
 
 typedef struct s_color
 {
@@ -31,7 +31,7 @@ typedef struct s_color
 	int		color_b;
 }	t_color;
 
-typedef struct s_data
+typedef struct s_vault
 {
 	char	*north_texture;
 	char	*south_texture;
@@ -40,22 +40,25 @@ typedef struct s_data
 	char	**map;
 	int		floor;
 	int		ceiling;
-}	t_data;
+	int		init_x;
+	int		init_y;
+	char	compass;
+}	t_vault;
 
 /* User input errors */
 int		ft_input_errors(int argc, char *file);
-int		ft_file_errors(t_info *info, t_data *data, t_color *color);
-int		ft_fill_data(t_data *data, char *line);
+int		ft_file_errors(t_file *file, t_vault *vault, t_color *color);
+int		ft_fill_data(t_vault *vault, char *line);
 int		ft_invalidmap_line(char **file_content);
-int		ft_create_map(t_data *data, char **file_content);
-int		ft_invalidcolor_line(t_data *data, t_color *color, char **file_content);
+int		ft_create_map(t_vault *vault, char **file_content);
+int		ft_invalidcolor_line(t_vault *vault, t_color *color, char **content);
 
 //TODO change get_next_line place in the program
 char	*ft_get_next_line(int fd);
 
 /* Different general utilities functions */
-void	ft_freedata(t_data *data);
-void	ft_init_structs(t_data *data, t_color *color);
-void	ft_trim_data(t_data *data);
+void	ft_freedata(t_vault *vault);
+void	ft_init_structs(t_vault *vault, t_color *color);
+void	ft_trim_data(t_vault *vault);
 
 #endif

@@ -1,0 +1,20 @@
+﻿|**** EXTENSION ****|
+EX: Wrong extension.
+
+
+|**** TEXTURES ****|
+TE1: One texture missing (EA)
+TE2: Texture path (WE) does not exist
+
+
+|**** FLOOR - CEILING ****|
+FC1: One parameter missing in ceiling color
+FC2: Floor rgb metric out of range 0 - 255 (333)
+FC3: invalid character (a) in floor
+
+
+|**** MAP ****|
+M1: Invalid character in map (G in line 18)
+M2: map wall is 0 (line 25)
+M3: new line in map
+M4: map not in last position

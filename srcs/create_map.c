@@ -13,44 +13,44 @@
 #include "cubed.h"
 #include <stdlib.h>
 
-static int	ft_map_limits(t_data *data)
+static int	ft_map_limits(t_vault *vault)
 {
 	int	i;
 
 	i = -1;
-	while (data->map[0][++i])
-		if (!ft_chr_in_set(data->map[0][i], " 1\n"))
+	while (vault->map[0][++i])
+		if (!ft_chr_in_set(vault->map[0][i], " 1\n"))
 			return (1);
 	i = -1;
-	while (data->map[ft_doublestrlen((const char **)data->map) - 1][++i])
-		if (!ft_chr_in_set(data->map
-				[ft_doublestrlen((const char **)data->map) - 1][++i], " 1\n"))
+	while (vault->map[ft_doublestrlen((const char **)vault->map) - 1][++i])
+		if (!ft_chr_in_set(vault->map
+				[ft_doublestrlen((const char **)vault->map) - 1][++i], " 1\n"))
 			return (1);
 	i = -1;
-	while (data->map[++i])
-		if (!ft_chr_in_set(data->map[i][ft_strlen(data->map[i]) - 2], " 1\n"))
+	while (vault->map[++i])
+		if (!ft_chr_in_set(vault->map[i][ft_strlen(vault->map[i]) - 2], " 1\n"))
 			return (1);
 	return (0);
 }
 
-static int	ft_parse_map(t_data *data)
+static int	ft_parse_map(t_vault *vault)
 {
 	int	i;
 	int	j;
 
-	if (ft_map_limits(data))
+	if (ft_map_limits(vault))
 		return (1);
 	i = 0;
-	while (++i < ft_doublestrlen((const char **)data->map) - 1)
+	while (++i < ft_doublestrlen((const char **)vault->map) - 1)
 	{
 		j = 0;
-		while (data->map[i][++j])
+		while (vault->map[i][++j])
 		{
-			if (data->map[i][j] == ' '
-				&& (!ft_chr_in_set(data->map[i][j + 1], " 1\n")
-					|| !ft_chr_in_set(data->map[i][j - 1], " 1\n")
-					|| !ft_chr_in_set(data->map[i + 1][j], " 1\n")
-					|| !ft_chr_in_set(data->map[i - 1][j], " 1\n")))
+			if (vault->map[i][j] == ' '
+				&& (!ft_chr_in_set(vault->map[i][j + 1], " 1\n")
+					|| !ft_chr_in_set(vault->map[i][j - 1], " 1\n")
+					|| !ft_chr_in_set(vault->map[i + 1][j], " 1\n")
+					|| !ft_chr_in_set(vault->map[i - 1][j], " 1\n")))
 				return (1);
 		}
 	}
@@ -98,7 +98,7 @@ static int	ft_map_size(char **file_content)
 	return (ft_actual_size(tmp));
 }
 
-int	ft_create_map(t_data *data, char **file_content)
+int	ft_create_map(t_vault *vault, char **file_content)
 {
 	int		i;
 	int		j;
@@ -106,7 +106,7 @@ int	ft_create_map(t_data *data, char **file_content)
 
 	if (ft_map_size(file_content) == -1)
 		return (1);
-	data->map = (char **)ft_calloc((ft_map_size(file_content) + 1),
+	vault->map = (char **)ft_calloc((ft_map_size(file_content) + 1),
 			sizeof(char *));
 	i = -1;
 	while (file_content[++i])
@@ -116,12 +116,12 @@ int	ft_create_map(t_data *data, char **file_content)
 		{
 			j = -1;
 			while (++j < ft_map_size(file_content))
-				data->map[j] = ft_strdup(file_content[i++]);
-			data->map[j] = 0;
+				vault->map[j] = ft_strdup(file_content[i++]);
+			vault->map[j] = 0;
 			break ;
 		}
 		free(tmp);
 	}
-	ft_parse_map(data);
+	ft_parse_map(vault);
 	return (0);
 }

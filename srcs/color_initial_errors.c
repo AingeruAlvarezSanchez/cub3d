@@ -13,13 +13,13 @@
 #include "cubed.h"
 #include <stdlib.h>
 
-static void	ft_create_trgb(t_data *data, t_color *color, int check)
+static void	ft_create_trgb(t_vault *vault, t_color *color, int check)
 {
 	if (check == 1)
-		data->floor = 1 << 24 | color->color_r << 16
+		vault->floor = 1 << 24 | color->color_r << 16
 			| color->color_g << 8 | color->color_b;
 	else
-		data->ceiling = 1 << 24 | color->color_r << 16
+		vault->ceiling = 1 << 24 | color->color_r << 16
 			| color->color_g << 8 | color->color_b;
 }
 
@@ -50,7 +50,7 @@ static int	ft_check_rgb_value(t_color *color, char *line, int color_len)
 	return (color_start += color_len + 1, rgb_checker++, free(tmp), 0);
 }
 
-static int	ft_color_values(t_data *data, t_color *color, char *line, int check)
+static int	ft_color_values(t_vault *vault, t_color *color, char *line, int ch)
 {
 	int	i;
 	int	color_len;
@@ -72,34 +72,34 @@ static int	ft_color_values(t_data *data, t_color *color, char *line, int check)
 			if (ft_check_rgb_value(color, line, color_len))
 				return (free(line), 1);
 			if (color_n == 3)
-				ft_create_trgb(data, color, check);
+				ft_create_trgb(vault, color, ch);
 			color_len = -1;
 		}
 	}
 	return (free(line), 0);
 }
 
-int	ft_invalidcolor_line(t_data *data, t_color *color, char **file_content)
+int	ft_invalidcolor_line(t_vault *vault, t_color *color, char **content)
 {
 	char	*tmp;
 	int		i;
 
 	i = -1;
-	while (file_content[++i])
+	while (content[++i])
 	{
-		tmp = ft_strtrim(file_content[i], " \n");
+		tmp = ft_strtrim(content[i], " \n");
 		if (*tmp == 'F')
 		{
 			if (color->floor_integer != -1)
 				return (free(tmp), 1);
-			if (ft_color_values(data, color, ft_strtrim(tmp, "F "), 1))
+			if (ft_color_values(vault, color, ft_strtrim(tmp, "F "), 1))
 				return (free(tmp), 1);
 		}
 		if (*tmp == 'C')
 		{
 			if (color->ceiling_integer != -1)
 				return (free(tmp), 1);
-			if (ft_color_values(data, color, ft_strtrim(tmp, "C "), 2))
+			if (ft_color_values(vault, color, ft_strtrim(tmp, "C "), 2))
 				return (free(tmp), 1);
 		}
 		free(tmp);

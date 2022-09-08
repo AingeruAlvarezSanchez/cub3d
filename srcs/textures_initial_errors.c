@@ -36,31 +36,31 @@ static int	ft_isvalid_route(char *line)
 	return (free(tmp), 0);
 }
 
-int	ft_fill_data(t_data *data, char *line)
+int	ft_fill_data(t_vault *vault, char *line)
 {
 	if (!ft_strncmp(line, "NO", 2))
 	{
-		if (data->north_texture || ft_isvalid_route(line))
+		if (vault->north_texture || ft_isvalid_route(line))
 			return (free(line), 1);
-		data->north_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
+		vault->north_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
 	}
 	if (!ft_strncmp(line, "SO", 2))
 	{
-		if (data->south_texture || ft_isvalid_route(line))
+		if (vault->south_texture || ft_isvalid_route(line))
 			return (free(line), 1);
-		data->south_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
+		vault->south_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
 	}
 	if (!ft_strncmp(line, "WE", 2))
 	{
-		if (data->west_texture || ft_isvalid_route(line))
+		if (vault->west_texture || ft_isvalid_route(line))
 			return (free(line), 1);
-		data->west_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
+		vault->west_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
 	}
 	if (!ft_strncmp(line, "EA", 2))
 	{
-		if (data->east_texture || ft_isvalid_route(line))
+		if (vault->east_texture || ft_isvalid_route(line))
 			return (free(line), 1);
-		data->east_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
+		vault->east_texture = ft_substr(line, 2, (ft_strlen(line) - 2));
 	}
 	return (free(line), 0);
 }

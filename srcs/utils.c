@@ -13,44 +13,44 @@
 #include "cubed.h"
 #include <stdlib.h>
 
-void	ft_freedata(t_data *data)
+void	ft_freedata(t_vault *vault)
 {
-	free(data->north_texture);
-	free(data->south_texture);
-	free(data->west_texture);
-	free(data->east_texture);
-	ft_doublefree(data->map);
+	free(vault->north_texture);
+	free(vault->south_texture);
+	free(vault->west_texture);
+	free(vault->east_texture);
+	ft_doublefree(vault->map);
 }
 
-void	ft_init_structs(t_data *data, t_color *color)
+void	ft_init_structs(t_vault *vault, t_color *color)
 {
-	data->north_texture = NULL;
-	data->south_texture = NULL;
-	data->west_texture = NULL;
-	data->east_texture = NULL;
-	data->map = NULL;
+	vault->north_texture = NULL;
+	vault->south_texture = NULL;
+	vault->west_texture = NULL;
+	vault->east_texture = NULL;
+	vault->map = NULL;
 	color->ceiling_integer = -1;
 	color->floor_integer = -1;
 }
 
-void	ft_trim_data(t_data *data)
+void	ft_trim_data(t_vault *vault)
 {
 	char	*tmp;
 
-	tmp = ft_strdup(data->north_texture);
-	free(data->north_texture);
-	data->north_texture = ft_strtrim(tmp, " \n");
+	tmp = ft_strdup(vault->north_texture);
+	free(vault->north_texture);
+	vault->north_texture = ft_strtrim(tmp, " \n");
 	free(tmp);
-	tmp = ft_strdup(data->south_texture);
-	free(data->south_texture);
-	data->south_texture = ft_strtrim(tmp, " \n");
+	tmp = ft_strdup(vault->south_texture);
+	free(vault->south_texture);
+	vault->south_texture = ft_strtrim(tmp, " \n");
 	free(tmp);
-	tmp = ft_strdup(data->west_texture);
-	free(data->west_texture);
-	data->west_texture = ft_strtrim(tmp, " \n");
+	tmp = ft_strdup(vault->west_texture);
+	free(vault->west_texture);
+	vault->west_texture = ft_strtrim(tmp, " \n");
 	free(tmp);
-	tmp = ft_strdup(data->east_texture);
-	free(data->east_texture);
-	data->east_texture = ft_strtrim(tmp, " \n");
+	tmp = ft_strdup(vault->east_texture);
+	free(vault->east_texture);
+	vault->east_texture = ft_strtrim(tmp, " \n");
 	free(tmp);
 }

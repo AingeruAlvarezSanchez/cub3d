@@ -49,45 +49,45 @@ static int	ft_isvalid_line(const char *line)
 	return (0);
 }
 
-static int	ft_isvalid_file(t_data *data, t_color *color, char **file_content)
+static int	ft_isvalid_file(t_vault *vault, t_color *color, char **file_content)
 {
 	int	i;
 
 	i = -1;
-	ft_init_structs(data, color);
+	ft_init_structs(vault, color);
 	while (file_content[++i])
-		if (ft_fill_data(data, ft_strtrim(file_content[i], " \n")))
+		if (ft_fill_data(vault, ft_strtrim(file_content[i], " \n")))
 			return (1);
-	if (!data->north_texture || !data->south_texture
-		|| !data->west_texture || !data->east_texture)
+	if (!vault->north_texture || !vault->south_texture
+		|| !vault->west_texture || !vault->east_texture)
 		return (1);
 	if (ft_invalidmap_line(file_content))
 		return (1);
-	if (ft_invalidcolor_line(data, color, file_content))
+	if (ft_invalidcolor_line(vault, color, file_content))
 		return (1);
-	ft_trim_data(data);
-	if (open(data->north_texture, O_RDONLY) < 0
-		|| open(data->south_texture, O_RDONLY) < 0
-		|| open(data->west_texture, O_RDONLY) < 0
-		|| open(data->east_texture, O_RDONLY) < 0)
+	ft_trim_data(vault);
+	if (open(vault->north_texture, O_RDONLY) < 0
+		|| open(vault->south_texture, O_RDONLY) < 0
+		|| open(vault->west_texture, O_RDONLY) < 0
+		|| open(vault->east_texture, O_RDONLY) < 0)
 		return (perror("Error "), 1);
-	if (ft_create_map(data, file_content))
+	if (ft_create_map(vault, file_content))
 		return (1);
 	return (0);
 }
 
-int	ft_file_errors(t_info *info, t_data *data, t_color *color)
+int	ft_file_errors(t_file *file, t_vault *vault, t_color *color)
 {
 	char	**file_content;
 	int		i;
 
 	i = -1;
-	file_content = (char **)ft_calloc(info->file_size + 2, sizeof(char *));
+	file_content = (char **)ft_calloc(file->file_size + 2, sizeof(char *));
 	if (!file_content)
 		return (1);
-	while (++i < (info->file_size + 1))
+	while (++i < (file->file_size + 1))
 	{
-		file_content[i] = ft_get_next_line(info->file_fd);
+		file_content[i] = ft_get_next_line(file->file_fd);
 		if (ft_isvalid_line(file_content[i]))
 		{
 			file_content[i + 1] = 0;
@@ -96,10 +96,10 @@ int	ft_file_errors(t_info *info, t_data *data, t_color *color)
 		}
 	}
 	file_content[i] = 0;
-	if (ft_isvalid_file(data, color, file_content))
-		return (ft_freedata(data), ft_doublefree(file_content),
+	if (ft_isvalid_file(vault, color, file_content))
+		return (ft_freedata(vault), ft_doublefree(file_content),
 			printf("Error : %s\n", strerror(22)));
-	return (free(info->file), ft_doublefree(file_content), 0);
+	return (free(file->file), ft_doublefree(file_content), 0);
 }
 
 int	ft_input_errors(int argc, char *file)

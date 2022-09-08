@@ -18,29 +18,29 @@
 
 int	main(int argc, char **argv)
 {
-	t_info	info;
-	t_data	data;
+	t_file	file;
+	t_vault	vault;
 	t_color	color;
 
 	if (ft_input_errors(argc, argv[1]))
 		return (1);
-	info.file_fd = open(argv[1], O_RDONLY);
-	info.file_size = ft_getfile_size(info.file_fd);
-	close(info.file_fd);
-	if (!info.file_size)
+	file.file_fd = open(argv[1], O_RDONLY);
+	file.file_size = ft_getfile_size(file.file_fd);
+	close(file.file_fd);
+	if (!file.file_size)
 		return (1);
-	info.file = ft_strdup(argv[1]);
-	info.file_fd = open(info.file, O_RDONLY);
-	if (ft_file_errors(&info, &data, &color))
-		return (close(info.file_fd), free(info.file), 1);
+	file.file = ft_strdup(argv[1]);
+	file.file_fd = open(file.file, O_RDONLY);
+	if (ft_file_errors(&file, &vault, &color))
+		return (close(file.file_fd), free(file.file), 1);
 	//testing purposes
 	int check = -1;
-	while (data.map[++check])
-		printf("map: %s", data.map[check]);
-	printf("\ntextures:\nNO: %s\nSO: %s\nWE: %s\nEA: %s\n", data.north_texture, data.south_texture, data.west_texture, data.east_texture);
-	printf("\ncolor integer representation for mlx:\nfloor: %d\nceiling: %d\n", data.floor, data.ceiling);
+	while (vault.map[++check])
+		printf("map: %s", vault.map[check]);
+	printf("\ntextures:\nNO: %s\nSO: %s\nWE: %s\nEA: %s\n", vault.north_texture, vault.south_texture, vault.west_texture, vault.east_texture);
+	printf("\ncolor integer representation for mlx:\nfloor: %d\nceiling: %d\n", vault.floor, vault.ceiling);
 	//testing purposes
-	close(info.file_fd);
-	ft_freedata(&data);
+	close(file.file_fd);
+	ft_freedata(&vault);
 	return (0);
 }
