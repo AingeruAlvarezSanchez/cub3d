@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 	file.file_fd = open(file.file, O_RDONLY);
 	if (ft_file_errors(&file, &vault, &color))
 		return (close(file.file_fd), free(file.file), 1);
+	close(file.file_fd);
 	//testing purposes
 	int check = -1;
 	while (vault.map[++check])
@@ -41,7 +42,6 @@ int	main(int argc, char **argv)
 	printf("\ncolor integer representation for mlx:\nfloor: %d\nceiling: %d\n", vault.floor, vault.ceiling);
 	printf("\ncompass direction and initial position in the map:\ncompass: %c\npos_x: %d\npos_y: %d\n", vault.compass, vault.init_x, vault.init_y);
 	//testing purposes
-	close(file.file_fd);
 	ft_freedata(&vault);
 	return (0);
 }

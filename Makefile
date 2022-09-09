@@ -11,7 +11,7 @@ SANITIZE = -fsanitize=address
 ### INCLUDE RELATED VARIABLES ###
 LIBFT = include/Libft_extended/
 MINILIB = include/minilib/
-FRAMEWORK = -framework OpenGL -framework AppKit
+FRAMEWORK = -Lmlx -lmlx -framework OpenGL -framework AppKit
 #################################
 
 #### FILES RELATED VARIABLES ####
@@ -63,12 +63,12 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	echo "⏳  $(BLUE)Starting to create Executables$(END)  ⏳"
-#	$(MAKE) -C $(MINILIB) 2> logs
+	$(MAKE) -C $(MINILIB) 2> logs
 #	./loading_screen.sh
 	echo "✅  $(GREEN)MinilibX Correctly Compiled$(END)  ✅"
 	$(MAKE) -C $(LIBFT) ext
 	echo "✅  $(GREEN)Libft Correctly Compiled$(END)  ✅"
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)libft.a -L $(MINILIB) $(FFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)libft.a -L $(MINILIB) $(FRAMEWORK) -o $(NAME)
 	echo "🎊  $(GREEN)Cub3d project correctly compiled$(END)  🎊"
 	clear
 	echo "$(BLACK)$$WELCOME_TO_HELL1$(END)"
@@ -82,7 +82,7 @@ $(NAME): $(OBJS)
 
 clean:
 	echo "🔥  $(RED)Starting to purge objects$(END)  🔥"
-#	$(MAKE) -C $(MINILIB) clean
+	$(MAKE) -C $(MINILIB) clean
 	$(MAKE) -C $(LIBFT) clean
 	$(RM) $(OBJS)
 	echo "✅  $(GREEN)Objects correctly purged$(END)  ✅"

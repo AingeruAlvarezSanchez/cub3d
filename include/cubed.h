@@ -14,6 +14,7 @@
 # define CUBED_H
 
 # include "Libft_extended/libft.h"
+# include "minilib/mlx.h"
 
 typedef struct s_file
 {
