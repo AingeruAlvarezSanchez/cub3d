@@ -52,6 +52,11 @@ static int	ft_parse_map(t_vault *vault)
 					|| !ft_chr_in_set(vault->map[i + 1][j], " 1\n")
 					|| !ft_chr_in_set(vault->map[i - 1][j], " 1\n")))
 				return (1);
+			else if (ft_chr_in_set(vault->map[i][j], "NSWE"))
+			{
+				vault->init_x = j;
+				vault->init_y = i;
+			}
 		}
 	}
 	return (0);
@@ -122,6 +127,7 @@ int	ft_create_map(t_vault *vault, char **file_content)
 		}
 		free(tmp);
 	}
-	ft_parse_map(vault);
+	if (ft_parse_map(vault))
+		return (1);
 	return (0);
 }

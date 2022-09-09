@@ -17,18 +17,26 @@ static int	ft_syntax_errors(char **file)
 {
 	int	i;
 	int	j;
+	int	init_pos;
 
 	i = -1;
+	init_pos = 0;
 	while (file[++i])
 	{
 		if (*file[i] == '1')
 		{
 			j = -1;
 			while (file[i][++j])
+			{
 				if (!ft_chr_in_set(file[i][j], "10NSWE "))
 					return (1);
+				else if (ft_chr_in_set(file[i][j], "NSWE"))
+					init_pos++;
+			}
 		}
 	}
+	if (init_pos != 1)
+		return (1);
 	return (0);
 }
 

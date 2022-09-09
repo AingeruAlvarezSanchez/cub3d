@@ -73,6 +73,7 @@ static int	ft_isvalid_file(t_vault *vault, t_color *color, char **file_content)
 		return (perror("Error "), 1);
 	if (ft_create_map(vault, file_content))
 		return (1);
+	vault->compass = vault->map[vault->init_y][vault->init_x];
 	return (0);
 }
 
