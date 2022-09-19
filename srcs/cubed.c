@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:38:28 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 01:20:29 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/19 13:17:27 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	main(int argc, char **argv)
 	printf("\ncolor integer representation for mlx:\nfloor: %d\nceiling: %d\n", vault.floor, vault.ceiling);
 	printf("\ncompass direction and initial position in the map:\ncompass: %c\npos_x: %d\npos_y: %d\n", vault.compass, vault.init_x, vault.init_y);
 	//testing purposes
+	ft_start(&vault);
 	ft_freedata(&vault);
 	return (0);
 }

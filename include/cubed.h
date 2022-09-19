@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:59:47 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 01:12:48 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/19 14:07:28 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,19 @@
 
 # include "Libft_extended/libft.h"
 # include "minilib/mlx.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <string.h>
+# include <math.h>
+
+# define ROTATE_LEFT        123
+# define ROTATE_RIGHT       124
+# define FORWARD_W_Z        13
+# define BACK_S_S           1
+# define RIGHT_D_D          2
+# define LEFT_A_Q           0
+
 
 typedef struct s_file
 {
@@ -32,18 +45,95 @@ typedef struct s_color
 	int		color_b;
 }	t_color;
 
+typedef struct  s_texture
+{
+    int         texdir;
+    double      wallX;
+    int         texX;
+    int         texY;
+    double      step;
+    double      texPos;
+}                   t_texture;
+
+typedef struct  s_ray
+{
+    double      posX;
+    double      posY;
+    double      dirX;
+    double      dirY;
+    double      planX;
+    double      planY;
+    double      rayDirX;
+    double      rayDirY;
+    double      cameraX;
+    int         mapX;
+    int         mapY;
+    double      sideDistX;
+    double      sideDistY;
+    double      deltaDistX;
+    double      deltaDistY;
+    int         stepX;
+    int         stepY;
+    int         hit;
+    int         side;
+    double      perpWallDist;
+    int         lineHeight;
+    int         drawStart;
+    int         drawEnd;
+    double      movespeed;
+    double      rotspeed;
+    int         x;
+    int         texture;
+}                   t_ray;
+
+typedef struct      s_data
+{
+
+    void        *mlx_ptr;
+    void        *mlx_win;
+    void        *img;
+    int         *addr;
+    int         bits_per_pixel;
+    int         line_length;
+    int         endian;
+    int         forward;
+    int         back;
+    int         left;
+    int         right;
+    int         rotate_left;
+    int         rotate_right;
+    int         width;
+    int         height;
+    void        *img2;
+    int         *addr2;
+}                   t_data;
+
+
 typedef struct s_vault
 {
 	char	*north_texture;
 	char	*south_texture;
 	char	*east_texture;
 	char	*west_texture;
-	char	**map;
 	int		floor;
 	int		ceiling;
-	int		init_x;
-	int		init_y;
-	char	compass;
+	int         Rx; //     resolution axis
+    int         Ry; //     resolution axis
+    int         F;  //     floor color
+    int         C;  //     ceiling color
+    char        *NO; //    path to NO texture
+    char        *SO; //    path to SO texture
+    char        *WE; //    path to WE texture
+    char        *EA; //    path to EA texture
+    char        **map; //  map
+    char        compass; // compass
+    int         init_x;  //    init position x
+    int         init_y;  //    init position y
+    t_data      texture[4];
+    t_data      data;
+    t_ray       ray;
+    t_texture   t;
+
 }	t_vault;
 
 /* User input errors */
@@ -61,5 +151,30 @@ char	*ft_get_next_line(int fd);
 void	ft_freedata(t_vault *vault);
 void	ft_init_structs(t_vault *vault, t_color *color);
 void	ft_trim_data(t_vault *vault);
+int         ft_start(t_vault *vault);
+void        ft_color_res(t_vault *vault);
+void        ft_init(t_vault *vault);
+
+int         ft_raycast(t_vault *vault);
+int         ft_draw(t_vault *vault);
+void        ft_texture(t_vault *vault);
+void        ft_texture_adress(t_vault *vault);
+int         ft_key_press(int keycode, t_vault *vault);
+int         ft_key_release(int keycode, t_vault *vault);
+int         ft_brush(t_vault *vault);
+void        ft_draw_text(t_vault *vault, int x, int y);
+void        ft_init_2(t_vault *vault);
+void        ft_init_3(t_vault *vault);
+void        ft_init_texture(t_vault *vault);
+void        ft_sideDist(t_vault *vault);
+void        ft_ray_inc(t_vault *vault);
+void        ft_drawStartE(t_vault *vault);
+void        ft_magic(t_vault *vault);
+void        ft_forward_back(t_vault *vault);
+void        ft_left_right(t_vault *vault);
+void        ft_rotate_right_left(t_vault *vault);
+void        ft_error(t_vault *vault, char *str);
+int         ft_exit(t_vault *vault);
+
 
 #endif

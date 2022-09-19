@@ -4,7 +4,7 @@ NAME = cub3d
 # COMPILATION RELATED VARIABLES #
 CC = clang
 RM = rm -rf
-CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra  -g3 -fsanitize=address
 SANITIZE = -fsanitize=address
 #################################
 
@@ -24,6 +24,15 @@ FILES = srcs/cubed.c					\
 		srcs/color_initial_errors.c		\
 		srcs/utils.c					\
 		srcs/get_next_line.c			\
+		srcs/color_resolution_init.c	\
+		srcs/draw.c						\
+		srcs/hangman.c					\
+		srcs/keys.c						\
+		srcs/spellcaster.c				\
+		srcs/thundercaster.c			\
+		srcs/thundercaster_init.c		\
+		srcs/thundercaster_move.c		\
+		srcs/thundercaster_utils.c		\
 
 OBJS = $(FILES:%.c=%.o)
 #################################
