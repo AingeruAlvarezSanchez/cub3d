@@ -39,20 +39,19 @@ static int	ft_parse_map(t_vault *vault)
 	int	i;
 	int	j;
 
-	if (ft_map_limits(vault))
-		return (1);
 	i = 0;
 	while (++i < ft_doublestrlen((const char **)vault->map) - 1)
 	{
 		j = 0;
 		while (vault->map[i][++j])
 		{
-			if ((vault->map[i][j] == ' ' && ft_isprint(vault->map[i + 1][j])) &&
-				(!ft_chr_in_set(vault->map[i][j + 1], " 1\n")
-			|| !ft_chr_in_set(vault->map[i][j - 1], " 1\n")
+			if (ft_map_limits(vault) && ((vault->map[i][j] == ' '
+				&& (ft_strlen(vault->map[i]) < ft_strlen(vault->map[i + 1])))
+				&& (!ft_chr_in_set(vault->map[i][j + 1], " 1\n")
+				|| !ft_chr_in_set(vault->map[i][j - 1], " 1\n")
 			|| !ft_chr_in_set(vault->map[i + 1][j], " 1\n")
-			|| !ft_chr_in_set(vault->map[i - 1][j], " 1\n")))
-					return (1);
+			|| !ft_chr_in_set(vault->map[i - 1][j], " 1\n"))))
+				return (1);
 			else if (ft_chr_in_set(vault->map[i][j], "NSWE"))
 			{
 				vault->init_x = j;
