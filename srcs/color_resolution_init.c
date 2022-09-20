@@ -25,8 +25,8 @@ void    ft_color_res(t_vault *vault)
 {
         vault->Rx = 2000;
         vault->Ry = 1000;
-        vault->F = 16842496;
-        vault->C = 25198720;
+        vault->F = vault->floor;
+        vault->C = vault->ceiling;
 }
 
 void    ft_init(t_vault *vault)
@@ -35,8 +35,8 @@ void    ft_init(t_vault *vault)
     vault->SO = NULL;
     vault->WE = NULL;
     vault->EA = NULL;
-    vault->F = 0;
-    vault->C = 0;
+    //vault->F = 0;
+    //vault->C = 0;
     vault->Rx = 0;
     vault->Ry = 0;
 //    vault->map = NULL;

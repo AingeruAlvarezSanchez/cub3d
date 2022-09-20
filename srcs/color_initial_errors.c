@@ -43,10 +43,8 @@ static int	ft_check_rgb_value(t_color *color, char *line, int color_len)
 	else if (rgb_checker == 1)
 		color->color_g = ft_atoi(tmp);
 	else if (rgb_checker == 2)
-	{
-		color->color_b = ft_atoi(tmp);
-		rgb_checker = -1;
-	}
+		return (color->color_b = ft_atoi(tmp), color_len = 0, rgb_checker = -1,
+				color_start = 0, rgb_checker++, free(tmp), 0);
 	return (color_start += color_len + 1, rgb_checker++, free(tmp), 0);
 }
 
@@ -72,7 +70,9 @@ static int	ft_color_values(t_vault *vault, t_color *color, char *line, int ch)
 			if (ft_check_rgb_value(color, line, color_len))
 				return (free(line), 1);
 			if (color_n == 3)
+			{
 				ft_create_trgb(vault, color, ch);
+			}
 			color_len = -1;
 		}
 	}

@@ -68,6 +68,11 @@ int     ft_raycast(t_vault *vault)
     return (0);
 }
 
+int 	ft_exit_game(void)
+{
+	exit(0);
+	//TODO
+}
 int     ft_draw(t_vault *vault)
 {
     ft_init_2(vault);
@@ -81,7 +86,7 @@ int     ft_draw(t_vault *vault)
     vault->data.img2 = mlx_new_image(vault->data.mlx_ptr, vault->Rx, vault->Ry);
     vault->data.addr2 = (int *)mlx_get_data_addr(vault->data.img2, &vault->
             data.bits_per_pixel, &vault->data.line_length, &vault->data.endian);
-    //mlx_hook(vault->data.mlx_win, 33, 1L<<17, ft_test, vault);
+    mlx_hook(vault->data.mlx_win, 17, 1L<<17, ft_exit_game, vault);
     mlx_hook(vault->data.mlx_win, 2, 1L << 0, ft_key_press, vault);
     mlx_loop_hook(vault->data.mlx_ptr, ft_raycast, vault);
     mlx_hook(vault->data.mlx_win, 3, 1L << 1, ft_key_release, vault);
