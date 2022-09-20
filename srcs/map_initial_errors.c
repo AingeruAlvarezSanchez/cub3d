@@ -80,10 +80,14 @@ int	ft_invalidmap_line(char **file_content)
 		return (1);
 	i = -1;
 	while (file_content[++i])
+	{
 		tmp[i] = ft_strtrim(file_content[i], " \n");
+		if (*tmp[i] == 'F' || *tmp[i] == 'C')
+			if (tmp[i][1] != ' ')
+				return (ft_doublefree(tmp), 1);
+	}
 	tmp[i] = 0;
 	if (ft_syntax_errors(tmp) || ft_blankline_in_map(tmp))
 		return (ft_doublefree(tmp), 1);
-	ft_doublefree(tmp);
-	return (0);
+	return (ft_doublefree(tmp), 0);
 }
