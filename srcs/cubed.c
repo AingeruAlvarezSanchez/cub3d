@@ -34,14 +34,6 @@ int	main(int argc, char **argv)
 	if (ft_file_errors(&file, &vault, &color))
 		return (close(file.file_fd), free(file.file), 1);
 	close(file.file_fd);
-	//testing purposes
-	int check = -1;
-	while (vault.map[++check])
-		printf("map: %s", vault.map[check]);
-	printf("\ntextures:\nNO: %s\nSO: %s\nWE: %s\nEA: %s\n", vault.north_texture, vault.south_texture, vault.west_texture, vault.east_texture);
-	printf("\ncolor integer representation for mlx:\nfloor: %d\nceiling: %d\n", vault.floor, vault.ceiling);
-	printf("\ncompass direction and initial position in the map:\ncompass: %c\npos_x: %d\npos_y: %d\n", vault.compass, vault.init_x, vault.init_y);
-	//testing purposes
 	ft_start(&vault);
 	ft_freedata(&vault);
 	return (0);
