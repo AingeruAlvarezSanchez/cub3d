@@ -6,7 +6,7 @@
 /*   By: adel-cor <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:43:31 by adel-cor          #+#    #+#             */
-/*   Updated: 2022/09/19 13:14:23 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:16:47 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,19 @@ void    ft_texture_adress(t_vault *vault)
 void    ft_texture(t_vault *vault)
 {
     if (!(vault->texture[0].img = mlx_xpm_file_to_image(vault->data.mlx_ptr,
-                    "./textures/red.xpm", &(vault->texture[0].width),
+                    vault->north_texture, &(vault->texture[0].width),
                     &(vault->texture[0].height))))
         ft_error(vault, "Texture NO\n");
     if (!(vault->texture[1].img = mlx_xpm_file_to_image(vault->data.mlx_ptr,
-                    "./textures/bluestone.xpm", &(vault->texture[1].width),
+                    vault->south_texture, &(vault->texture[1].width),
                     &(vault->texture[1].height))))
         ft_error(vault, "Texture SO\n");
     if (!(vault->texture[2].img = mlx_xpm_file_to_image(vault->data.mlx_ptr,
-                    "./textures/greystone.xpm", &(vault->texture[2].width),
+                    vault->west_texture, &(vault->texture[2].width),
                     &(vault->texture[2].height))))
         ft_error(vault, "Texture WE\n");
     if (!(vault->texture[3].img = mlx_xpm_file_to_image(vault->data.mlx_ptr,
-                    "./textures/eagle.xpm", &(vault->texture[3].width),
+                    vault->east_texture, &(vault->texture[3].width),
                     &(vault->texture[3].height))))
         ft_error(vault, "Texture EA\n");
     ft_texture_adress(vault);
@@ -82,7 +82,7 @@ int     ft_draw(t_vault *vault)
     vault->data.addr = (int *)mlx_get_data_addr(vault->data.img, &vault->data.
             bits_per_pixel, &vault->data.line_length, &vault->data.endian);
     vault->data.mlx_win = mlx_new_window(vault->data.mlx_ptr, vault->Rx,
-            vault->Ry, "Hello world!");
+            vault->Ry, "Cub3d");
     vault->data.img2 = mlx_new_image(vault->data.mlx_ptr, vault->Rx, vault->Ry);
     vault->data.addr2 = (int *)mlx_get_data_addr(vault->data.img2, &vault->
             data.bits_per_pixel, &vault->data.line_length, &vault->data.endian);

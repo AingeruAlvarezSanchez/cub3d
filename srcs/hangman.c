@@ -6,7 +6,7 @@
 /*   By: adel-cor <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:38:40 by adel-cor          #+#    #+#             */
-/*   Updated: 2022/09/19 13:13:09 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:03:38 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void    ft_error(t_vault *vault, char *str)
     write(1, "Error\n", 6);
     write(1, str, ft_strlen(str));
 
-    if (vault->NO)
-        free(vault->NO);
-    if (vault->SO)
-        free(vault->SO);
-    if (vault->WE)
-        free(vault->WE);
-    if (vault->EA)
-        free(vault->EA);
+    if (vault->north_texture)
+        free(vault->north_texture);
+    if (vault->south_texture)
+        free(vault->south_texture);
+    if (vault->west_texture)
+        free(vault->west_texture);
+    if (vault->east_texture)
+        free(vault->east_texture);
     ft_exit(vault);
 }
 

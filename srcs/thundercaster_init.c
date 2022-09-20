@@ -6,7 +6,7 @@
 /*   By: adel-cor <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:44:48 by adel-cor          #+#    #+#             */
-/*   Updated: 2022/09/19 13:14:42 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:17:28 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,6 @@ void    ft_init_3(t_vault *vault)
     vault->ray.mapY = (int)vault->ray.posY;
     vault->ray.movespeed = 0.1;
     vault->ray.rotspeed = 0.033 * 1.8;
-//    vault->ray.deltaDistX = (vault->ray.rayDirY == 0) ? 0 : \
-  //          ((vault->ray.rayDirX == 0) ? 1 : sqrt(1 + (vault->ray.rayDirY * \
-    //        vault->ray.rayDirY) / (vault->ray.rayDirX * vault->ray.rayDirX)));
-//    vault->ray.deltaDistY = (vault->ray.rayDirX == 0) ? 0 : \
-  //          ((vault->ray.rayDirY == 0) ? 1 : sqrt(1 + (vault->ray.rayDirX * \
-    //        vault->ray.rayDirX) / (vault->ray.rayDirY * vault->ray.rayDirY)));
 	vault->ray.deltaDistX =   fabs(1 / vault->ray.rayDirX);
 	vault->ray.deltaDistY =   fabs(1 / vault->ray.rayDirY);
 }

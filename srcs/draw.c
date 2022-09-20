@@ -6,7 +6,7 @@
 /*   By: adel-cor <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:37:04 by adel-cor          #+#    #+#             */
-/*   Updated: 2022/09/19 13:12:47 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:23:47 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int     ft_brush(t_vault *vault)
     i = vault->ray.drawEnd;
     while (++j < vault->ray.drawStart)
         vault->data.addr[j * vault->data.line_length / 4 +
-            vault->ray.x] = vault->C;
+            vault->ray.x] = vault->ceiling;
     if (j <= vault->ray.drawEnd)
         ft_draw_text(vault, vault->ray.x, j);
     j = i;
     while (++j < vault->Ry)
         vault->data.addr[j * vault->data.line_length / 4 +
-            vault->ray.x] = vault->F;
+            vault->ray.x] = vault->floor;
     return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:59:47 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/19 14:07:28 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:29:13 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,18 +117,12 @@ typedef struct s_vault
 	char	*west_texture;
 	int		floor;
 	int		ceiling;
-	int         Rx; //     resolution axis
-    int         Ry; //     resolution axis
-    int         F;  //     floor color
-    int         C;  //     ceiling color
-    char        *NO; //    path to NO texture
-    char        *SO; //    path to SO texture
-    char        *WE; //    path to WE texture
-    char        *EA; //    path to EA texture
-    char        **map; //  map
-    char        compass; // compass
-    int         init_x;  //    init position x
-    int         init_y;  //    init position y
+	int         Rx;
+    int         Ry;
+    char        **map;
+    char        compass;
+    int         init_x;
+    int         init_y; 
     t_data      texture[4];
     t_data      data;
     t_ray       ray;
@@ -144,7 +138,7 @@ int		ft_invalidmap_line(char **file_content);
 int		ft_create_map(t_vault *vault, char **file_content);
 int		ft_invalidcolor_line(t_vault *vault, t_color *color, char **content);
 
-//TODO change get_next_line place in the program
+
 char	*ft_get_next_line(int fd);
 
 /* Different general utilities functions */
