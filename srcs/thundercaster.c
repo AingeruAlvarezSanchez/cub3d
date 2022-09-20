@@ -68,11 +68,11 @@ int	ft_raycast(t_vault *vault)
 	return (0);
 }
 
-int	ft_exit_game(void)
+int	ft_exit_game(t_vault *vault)
 {
 	//destruir imagenes y meter free_data
+	ft_freedata(vault);
 	exit(0);
-	//TODO
 }
 
 int	ft_draw(t_vault *vault)
