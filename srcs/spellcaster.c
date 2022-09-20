@@ -6,39 +6,17 @@
 /*   By: adel-cor <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:42:18 by adel-cor          #+#    #+#             */
-/*   Updated: 2022/09/20 16:51:18 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/20 19:59:43 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubed.h"
 
-int     ft_start(t_vault *vault)
+int	ft_start(t_vault *vault)
 {
-	int	i;
-	char  *tmp;
-	i = -1;
-	while(vault->map[++i])
-	{
-		tmp = ft_strtrim(vault->map[i], "\n");
-		free(vault->map[i]);
-		vault->map[i] = ft_strdup(tmp);
-		free(tmp);
-	}
-	int check = -1;
-	while (vault->map[++check])
-		printf("map: %s\n", vault->map[check]);
-    ft_init(vault);
-    ft_color_res(vault);
-    if (ft_draw(vault))
+	ft_init(vault);
+	ft_color_res(vault);
+	if (ft_draw(vault))
 		return (1);
-    return (0);
+	return (0);
 }
-
-/*
-int     main(void)
-{
-    t_vault vault;
-    ft_start(&vault);
-    return(0);
-}*/
-

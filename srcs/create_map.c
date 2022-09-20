@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 01:12:06 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/07 00:53:39 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:01:48 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static int	ft_parse_map(t_vault *vault)
 		while (vault->map[i][++j])
 		{
 			if (ft_map_limits(vault) && ((vault->map[i][j] == ' '
-				&& (ft_strlen(vault->map[i]) < ft_strlen(vault->map[i + 1])))
+					&& (ft_strlen(vault->map[i])
+						< ft_strlen(vault->map[i + 1])))
 				&& (!ft_chr_in_set(vault->map[i][j + 1], " 1\n")
 				|| !ft_chr_in_set(vault->map[i][j - 1], " 1\n")
 			|| !ft_chr_in_set(vault->map[i + 1][j], " 1\n")

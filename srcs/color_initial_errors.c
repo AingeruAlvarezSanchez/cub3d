@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 01:05:27 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/07 00:54:02 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:00:11 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	ft_check_rgb_value(t_color *color, char *line, int color_len)
 		color->color_g = ft_atoi(tmp);
 	else if (rgb_checker == 2)
 		return (color->color_b = ft_atoi(tmp), color_len = 0, rgb_checker = -1,
-				color_start = 0, rgb_checker++, free(tmp), 0);
+			color_start = 0, rgb_checker++, free(tmp), 0);
 	return (color_start += color_len + 1, rgb_checker++, free(tmp), 0);
 }
 
