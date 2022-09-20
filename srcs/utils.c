@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 02:48:49 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/06 00:52:47 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:05:19 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@ void	ft_init_structs(t_vault *vault, t_color *color)
 	vault->map = NULL;
 	color->ceiling_integer = -1;
 	color->floor_integer = -1;
+	vault->data.forward = 0;
+	vault->data.back = 0;
+	vault->data.left = 0;
+	vault->data.right = 0;
+	vault->data.rotate_right = 0;
+	vault->data.rotate_left = 0;
+	vault->ray.dirX = 0;
+	vault->ray.dirY = 0;
+	vault->ray.planX = 0;
+	vault->ray.planY = 0;
 }
 
 void	ft_trim_data(t_vault *vault)

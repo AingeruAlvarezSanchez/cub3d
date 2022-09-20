@@ -6,7 +6,7 @@
 /*   By: adel-cor <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:43:31 by adel-cor          #+#    #+#             */
-/*   Updated: 2022/09/20 13:16:47 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:21:30 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void    ft_texture_adress(t_vault *vault)
 {
-    vault->texture[0].addr = (int *)mlx_get_data_addr(vault->texture[0].img,
-            &vault->texture[0].bits_per_pixel,
-            &vault->texture[0].line_length, &vault->texture[0].endian);
-    vault->texture[1].addr = (int *)mlx_get_data_addr(vault->texture[1].img,
-            &vault->texture[1].bits_per_pixel,
-            &vault->texture[1].line_length, &vault->texture[1].endian);
-    vault->texture[2].addr = (int *)mlx_get_data_addr(vault->texture[2].img,
-            &vault->texture[2].bits_per_pixel,
-            &vault->texture[2].line_length, &vault->texture[2].endian);
-    vault->texture[3].addr = (int *)mlx_get_data_addr(vault->texture[3].img,
-            &vault->texture[3].bits_per_pixel,
-            &vault->texture[3].line_length, &vault->texture[3].endian);
+	vault->texture[0].addr = (int *)mlx_get_data_addr(vault->texture[0].img,
+			&vault->texture[0].bits_per_pixel,
+			&vault->texture[0].line_length, &vault->texture[0].endian);
+	vault->texture[1].addr = (int *)mlx_get_data_addr(vault->texture[1].img,
+			&vault->texture[1].bits_per_pixel,
+			&vault->texture[1].line_length, &vault->texture[1].endian);
+	vault->texture[2].addr = (int *)mlx_get_data_addr(vault->texture[2].img,
+			&vault->texture[2].bits_per_pixel,
+			&vault->texture[2].line_length, &vault->texture[2].endian);
+	vault->texture[3].addr = (int *)mlx_get_data_addr(vault->texture[3].img,
+			&vault->texture[3].bits_per_pixel,
+			&vault->texture[3].line_length, &vault->texture[3].endian);
 }
 
 void    ft_texture(t_vault *vault)
