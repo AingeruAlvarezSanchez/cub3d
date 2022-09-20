@@ -52,7 +52,7 @@ int	ft_texture(t_vault *vault)
 int	ft_raycast(t_vault *vault)
 {
 	vault->ray.x = 0;
-	while (vault->ray.x < vault->Rx)
+	while (vault->ray.x < vault->rx)
 	{
 		ft_init_3(vault);
 		ft_sidedist(vault);
@@ -81,13 +81,13 @@ int	ft_draw(t_vault *vault)
 	vault->data.mlx_ptr = mlx_init();
 	if (ft_texture(vault))
 		return (1);
-	vault->data.img = mlx_new_image(vault->data.mlx_ptr, vault->Rx, vault->Ry);
+	vault->data.img = mlx_new_image(vault->data.mlx_ptr, vault->rx, vault->ry);
 	vault->data.addr = (int *)mlx_get_data_addr(vault->data.img,
 			&vault->data.bits_per_pixel,
 			&vault->data.line_length, &vault->data.endian);
-	vault->data.mlx_win = mlx_new_window(vault->data.mlx_ptr, vault->Rx,
-			vault->Ry, "Cub3d");
-	vault->data.img2 = mlx_new_image(vault->data.mlx_ptr, vault->Rx, vault->Ry);
+	vault->data.mlx_win = mlx_new_window(vault->data.mlx_ptr, vault->rx,
+			vault->ry, "Cub3d");
+	vault->data.img2 = mlx_new_image(vault->data.mlx_ptr, vault->rx, vault->ry);
 	vault->data.addr2 = (int *)mlx_get_data_addr(vault->data.img2,
 			&vault->data.bits_per_pixel,
 			&vault->data.line_length, &vault->data.endian);

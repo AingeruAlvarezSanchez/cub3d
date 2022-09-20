@@ -23,14 +23,14 @@ void	ft_swap(int *a, int *b)
 
 void	ft_color_res(t_vault *vault)
 {
-	vault->Rx = 1920;
-	vault->Ry = 1080;
+	vault->rx = 1920;
+	vault->ry = 1080; //TODO en el subject de la correccion dice que esto lo tiene que poner el usuario(?) PREGUNTAR
 }
 
 void	ft_init(t_vault *vault)
 {
-	vault->Rx = 0;
-	vault->Ry = 0;
+	vault->rx = 0;
+	vault->ry = 0;
 	vault->data.img = NULL;
 	vault->texture[0].img = NULL;
 	vault->texture[1].img = NULL;

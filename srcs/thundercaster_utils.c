@@ -14,29 +14,29 @@
 
 void	ft_sidedist(t_vault *vault)
 {
-	if (vault->ray.rayDirX < 0)
+	if (vault->ray.raydir_x < 0)
 	{
-		vault->ray.stepX = -1;
-		vault->ray.sideDistX = (vault->ray.posX - vault->ray.mapX)
-			* vault->ray.deltaDistX;
+		vault->ray.step_x = -1;
+		vault->ray.sidedist_x = (vault->ray.pos_x - vault->ray.map_x)
+			* vault->ray.deltadist_x;
 	}
 	else
 	{
-		vault->ray.stepX = 1;
-		vault->ray.sideDistX = (vault->ray.mapX + 1.0 - vault->ray.posX)
-			* vault->ray.deltaDistX;
+		vault->ray.step_x = 1;
+		vault->ray.sidedist_x = (vault->ray.map_x + 1.0 - vault->ray.pos_x)
+			* vault->ray.deltadist_x;
 	}
-	if (vault->ray.rayDirY < 0)
+	if (vault->ray.raydir_y < 0)
 	{
-		vault->ray.stepY = -1;
-		vault->ray.sideDistY = (vault->ray.posY - vault->ray.mapY)
-			* vault->ray.deltaDistY;
+		vault->ray.step_y = -1;
+		vault->ray.sidedist_y = (vault->ray.pos_y - vault->ray.map_y)
+			* vault->ray.deltadist_y;
 	}
 	else
 	{
-		vault->ray.stepY = 1;
-		vault->ray.sideDistY = (vault->ray.mapY + 1.0 - vault->ray.posY)
-			* vault->ray.deltaDistY;
+		vault->ray.step_y = 1;
+		vault->ray.sidedist_y = (vault->ray.map_y + 1.0 - vault->ray.pos_y)
+			* vault->ray.deltadist_y;
 	}
 	ft_ray_inc(vault);
 }
@@ -45,19 +45,19 @@ void	ft_ray_inc(t_vault *vault)
 {
 	while (vault->ray.hit == 0)
 	{
-		if (vault->ray.sideDistX < vault->ray.sideDistY)
+		if (vault->ray.sidedist_x < vault->ray.sidedist_y)
 		{
-			vault->ray.sideDistX += vault->ray.deltaDistX;
-			vault->ray.mapX += vault->ray.stepX;
+			vault->ray.sidedist_x += vault->ray.deltadist_x;
+			vault->ray.map_x += vault->ray.step_x;
 			vault->ray.side = 0;
 		}
 		else
 		{
-			vault->ray.sideDistY += vault->ray.deltaDistY;
-			vault->ray.mapY += vault->ray.stepY;
+			vault->ray.sidedist_y += vault->ray.deltadist_y;
+			vault->ray.map_y += vault->ray.step_y;
 			vault->ray.side = 1;
 		}
-		if (vault->map[vault->ray.mapX][vault->ray.mapY] == '1')
+		if (vault->map[vault->ray.map_x][vault->ray.map_y] == '1')
 			vault->ray.hit = 1;
 	}
 	ft_drawstarte(vault);
@@ -66,20 +66,20 @@ void	ft_ray_inc(t_vault *vault)
 void	ft_drawstarte(t_vault *vault)
 {
 	if (vault->ray.side == 0)
-		vault->ray.perpWallDist = ((double)vault->ray.mapX
-				- vault->ray.posX + (1 - (double)vault->ray.stepX)
-				/ 2) / vault->ray.rayDirX;
+		vault->ray.perpwalldist = ((double)vault->ray.map_x
+				- vault->ray.pos_x + (1 - (double)vault->ray.step_x)
+				/ 2) / vault->ray.raydir_x;
 	else
-		vault->ray.perpWallDist = ((double)vault->ray.mapY
-				-vault->ray.posY + (1 - (double)vault->ray.stepY)
-				/ 2) / vault->ray.rayDirY;
-	vault->ray.lineHeight = (int)(vault->Ry / vault->ray.perpWallDist);
-	vault->ray.drawStart = -vault->ray.lineHeight / 2 + vault->Ry / 2;
-	if (vault->ray.drawStart < 0)
-		vault->ray.drawStart = 0;
-	vault->ray.drawEnd = vault->ray.lineHeight / 2 + vault->Ry / 2;
-	if (vault->ray.drawEnd >= vault->Ry || vault->ray.drawEnd < 0)
-		vault->ray.drawEnd = vault->Ry - 1;
+		vault->ray.perpwalldist = ((double)vault->ray.map_y
+				-vault->ray.pos_y + (1 - (double)vault->ray.step_y)
+				/ 2) / vault->ray.raydir_y;
+	vault->ray.lineheight = (int)(vault->ry / vault->ray.perpwalldist);
+	vault->ray.drawstart = -vault->ray.lineheight / 2 + vault->ry / 2;
+	if (vault->ray.drawstart < 0)
+		vault->ray.drawstart = 0;
+	vault->ray.drawend = vault->ray.lineheight / 2 + vault->ry / 2;
+	if (vault->ray.drawend >= vault->ry || vault->ray.drawend < 0)
+		vault->ray.drawend = vault->ry - 1;
 }
 
 void	ft_magic(t_vault *vault)

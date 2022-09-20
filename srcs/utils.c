@@ -39,10 +39,10 @@ void	ft_init_structs(t_vault *vault, t_color *color)
 	vault->data.right = 0;
 	vault->data.rotate_right = 0;
 	vault->data.rotate_left = 0;
-	vault->ray.dirX = 0;
-	vault->ray.dirY = 0;
-	vault->ray.planX = 0;
-	vault->ray.planY = 0;
+	vault->ray.dir_x = 0;
+	vault->ray.dir_y = 0;
+	vault->ray.plan_x = 0;
+	vault->ray.plan_y = 0;
 }
 
 void	ft_trim_data(t_vault *vault)

@@ -1,5 +1,5 @@
 #SHELL = /bin/bash
-NAME = cub3d
+NAME = cub3D
 
 # COMPILATION RELATED VARIABLES #
 CC = clang

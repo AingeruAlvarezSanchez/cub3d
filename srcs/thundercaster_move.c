@@ -16,21 +16,21 @@ void	ft_forward_back(t_vault *vault)
 {
 	if (vault->data.forward == 1)
 	{
-		if (vault->map[(int)(vault->ray.posX + vault->ray.dirX
-				* vault->ray.movespeed)][(int)vault->ray.posY] != '1')
-			vault->ray.posX += vault->ray.dirX * vault->ray.movespeed;
-		if (vault->map[(int)(vault->ray.posX)][(int)(vault->ray.posY
-					+ vault->ray.dirY * vault->ray.movespeed)] != '1')
-			vault->ray.posY += vault->ray.dirY * vault->ray.movespeed;
+		if (vault->map[(int)(vault->ray.pos_x + vault->ray.dir_x
+				* vault->ray.movespeed)][(int)vault->ray.pos_y] != '1')
+			vault->ray.pos_x += vault->ray.dir_x * vault->ray.movespeed;
+		if (vault->map[(int)(vault->ray.pos_x)][(int)(vault->ray.pos_y
+					+ vault->ray.dir_y * vault->ray.movespeed)] != '1')
+			vault->ray.pos_y += vault->ray.dir_y * vault->ray.movespeed;
 	}
 	if (vault->data.back == 1)
 	{
-		if (vault->map[(int)(vault->ray.posX - vault->ray.dirX
-				* vault->ray.movespeed)][(int)(vault->ray.posY)] != '1')
-			vault->ray.posX -= vault->ray.dirX * vault->ray.movespeed;
-		if (vault->map[(int)(vault->ray.posX)][(int)(vault->ray.posY
-				- vault->ray.dirY * vault->ray.movespeed)] != '1')
-			vault->ray.posY -= vault->ray.dirY * vault->ray.movespeed;
+		if (vault->map[(int)(vault->ray.pos_x - vault->ray.dir_x
+				* vault->ray.movespeed)][(int)(vault->ray.pos_y)] != '1')
+			vault->ray.pos_x -= vault->ray.dir_x * vault->ray.movespeed;
+		if (vault->map[(int)(vault->ray.pos_x)][(int)(vault->ray.pos_y
+				- vault->ray.dir_y * vault->ray.movespeed)] != '1')
+			vault->ray.pos_y -= vault->ray.dir_y * vault->ray.movespeed;
 	}
 }
 
@@ -38,21 +38,21 @@ void	ft_left_right(t_vault *vault)
 {
 	if (vault->data.right == 1)
 	{
-		if (vault->map[(int)(vault->ray.posX + vault->ray.dirY
-				* vault->ray.movespeed)][(int)vault->ray.posY] != '1')
-			vault->ray.posX += vault->ray.dirY * vault->ray.movespeed;
-		if (vault->map[(int)vault->ray.posX][(int)(vault->ray.posY
-			- vault->ray.dirX * vault->ray.movespeed)] != '1')
-			vault->ray.posY -= vault->ray.dirX * vault->ray.movespeed;
+		if (vault->map[(int)(vault->ray.pos_x + vault->ray.dir_y
+				* vault->ray.movespeed)][(int)vault->ray.pos_y] != '1')
+			vault->ray.pos_x += vault->ray.dir_y * vault->ray.movespeed;
+		if (vault->map[(int)vault->ray.pos_x][(int)(vault->ray.pos_y
+			- vault->ray.dir_x * vault->ray.movespeed)] != '1')
+			vault->ray.pos_y -= vault->ray.dir_x * vault->ray.movespeed;
 	}
 	if (vault->data.left == 1)
 	{
-		if (vault->map[(int)(vault->ray.posX - vault->ray.dirY
-				* vault->ray.movespeed)][(int)vault->ray.posY] != '1')
-			vault->ray.posX -= vault->ray.dirY * vault->ray.movespeed;
-		if (vault->map[(int)vault->ray.posX][(int)(vault->ray.posY
-			+ vault->ray.dirX * vault->ray.movespeed)] != '1')
-			vault->ray.posY += vault->ray.dirX * vault->ray.movespeed;
+		if (vault->map[(int)(vault->ray.pos_x - vault->ray.dir_y
+				* vault->ray.movespeed)][(int)vault->ray.pos_y] != '1')
+			vault->ray.pos_x -= vault->ray.dir_y * vault->ray.movespeed;
+		if (vault->map[(int)vault->ray.pos_x][(int)(vault->ray.pos_y
+			+ vault->ray.dir_x * vault->ray.movespeed)] != '1')
+			vault->ray.pos_y += vault->ray.dir_x * vault->ray.movespeed;
 	}
 }
 
@@ -66,28 +66,28 @@ void	ft_rotate_right_left(t_vault *vault)
 
 void	ft_r_right(t_vault *vault)
 {
-	vault->ray.oldDirX = vault->ray.dirX;
-	vault->ray.dirX = vault->ray.dirX * cos(-vault->ray.rotspeed / 2)
-		- vault->ray.dirY * sin(-vault->ray.rotspeed / 2);
-	vault->ray.dirY = vault->ray.oldDirX * sin(-vault->ray.rotspeed / 2)
-		+ vault->ray.dirY * cos(-vault->ray.rotspeed / 2);
-	vault->ray.oldPlaneX = vault->ray.planX;
-	vault->ray.planX = vault->ray.planX * cos(-vault->ray.rotspeed / 2)
-		- vault->ray.planY * sin(-vault->ray.rotspeed / 2);
-	vault->ray.planY = vault->ray.oldPlaneX * sin(-vault->ray.rotspeed / 2)
-		+ vault->ray.planY * cos(-vault->ray.rotspeed / 2);
+	vault->ray.olddir_x = vault->ray.dir_x;
+	vault->ray.dir_x = vault->ray.dir_x * cos(-vault->ray.rotspeed / 2)
+		- vault->ray.dir_y * sin(-vault->ray.rotspeed / 2);
+	vault->ray.dir_y = vault->ray.olddir_x * sin(-vault->ray.rotspeed / 2)
+		+ vault->ray.dir_y * cos(-vault->ray.rotspeed / 2);
+	vault->ray.oldplane_x = vault->ray.plan_x;
+	vault->ray.plan_x = vault->ray.plan_x * cos(-vault->ray.rotspeed / 2)
+		- vault->ray.plan_y * sin(-vault->ray.rotspeed / 2);
+	vault->ray.plan_y = vault->ray.oldplane_x * sin(-vault->ray.rotspeed / 2)
+		+ vault->ray.plan_y * cos(-vault->ray.rotspeed / 2);
 }
 
 void	ft_r_left(t_vault *vault)
 {
-	vault->ray.oldDirX = vault->ray.dirX;
-	vault->ray.dirX = vault->ray.dirX * cos(vault->ray.rotspeed / 2)
-		- vault->ray.dirY * sin(vault->ray.rotspeed / 2);
-	vault->ray.dirY = vault->ray.oldDirX * sin(vault->ray.rotspeed / 2)
-		+ vault->ray.dirY * cos(vault->ray.rotspeed / 2);
-	vault->ray.oldPlaneX = vault->ray.planX;
-	vault->ray.planX = vault->ray.planX * cos(vault->ray.rotspeed / 2)
-		- vault->ray.planY * sin(vault->ray.rotspeed / 2);
-	vault->ray.planY = vault->ray.oldPlaneX * sin(vault->ray.rotspeed / 2)
-		+ vault->ray.planY * cos(vault->ray.rotspeed / 2);
+	vault->ray.olddir_x = vault->ray.dir_x;
+	vault->ray.dir_x = vault->ray.dir_x * cos(vault->ray.rotspeed / 2)
+		- vault->ray.dir_y * sin(vault->ray.rotspeed / 2);
+	vault->ray.dir_y = vault->ray.olddir_x * sin(vault->ray.rotspeed / 2)
+		+ vault->ray.dir_y * cos(vault->ray.rotspeed / 2);
+	vault->ray.oldplane_x = vault->ray.plan_x;
+	vault->ray.plan_x = vault->ray.plan_x * cos(vault->ray.rotspeed / 2)
+		- vault->ray.plan_y * sin(vault->ray.rotspeed / 2);
+	vault->ray.plan_y = vault->ray.oldplane_x * sin(vault->ray.rotspeed / 2)
+		+ vault->ray.plan_y * cos(vault->ray.rotspeed / 2);
 }
