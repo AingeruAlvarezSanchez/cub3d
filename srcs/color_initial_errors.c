@@ -70,9 +70,7 @@ static int	ft_color_values(t_vault *vault, t_color *color, char *line, int ch)
 			if (ft_check_rgb_value(color, line, color_len))
 				return (free(line), 1);
 			if (color_n == 3)
-			{
 				ft_create_trgb(vault, color, ch);
-			}
 			color_len = -1;
 		}
 	}
@@ -102,7 +100,8 @@ int	ft_invalidcolor_line(t_vault *vault, t_color *color, char **content)
 			if (ft_color_values(vault, color, ft_strtrim(tmp, "C "), 2))
 				return (free(tmp), 1);
 		}
-		free(tmp);
 	}
-	return (0);
+	if (vault->floor == -1 || vault->ceiling == -1)
+		return (1);
+	return (free(tmp), 0);
 }

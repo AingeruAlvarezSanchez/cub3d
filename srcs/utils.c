@@ -29,6 +29,8 @@ void	ft_init_structs(t_vault *vault, t_color *color)
 	vault->west_texture = NULL;
 	vault->east_texture = NULL;
 	vault->map = NULL;
+	vault->floor = -1;
+	vault->ceiling = -1;
 	color->ceiling_integer = -1;
 	color->floor_integer = -1;
 }
