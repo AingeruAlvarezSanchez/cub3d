@@ -24,12 +24,13 @@ static int	ft_map_limits(t_vault *vault)
 	i = -1;
 	while (vault->map[ft_doublestrlen((const char **)vault->map) - 1][++i])
 		if (!ft_chr_in_set(vault->map
-				[ft_doublestrlen((const char **)vault->map) - 1][++i], " 1\n"))
+				[ft_doublestrlen((const char **)vault->map) - 1][i], " 1\n"))
 			return (1);
 	i = -1;
 	while (vault->map[++i])
 		if (!ft_chr_in_set(vault->map[i][ft_strlen(vault->map[i]) - 2], " 1\n"))
-			return (1);
+			if (ft_strlen(vault->map[i]) > 1)
+				return (1);
 	return (0);
 }
 
@@ -46,12 +47,12 @@ static int	ft_parse_map(t_vault *vault)
 		j = 0;
 		while (vault->map[i][++j])
 		{
-			if (vault->map[i][j] == ' '
-				&& (!ft_chr_in_set(vault->map[i][j + 1], " 1\n")
-					|| !ft_chr_in_set(vault->map[i][j - 1], " 1\n")
-					|| !ft_chr_in_set(vault->map[i + 1][j], " 1\n")
-					|| !ft_chr_in_set(vault->map[i - 1][j], " 1\n")))
-				return (1);
+			if ((vault->map[i][j] == ' ' && ft_isprint(vault->map[i + 1][j])) &&
+				(!ft_chr_in_set(vault->map[i][j + 1], " 1\n")
+			|| !ft_chr_in_set(vault->map[i][j - 1], " 1\n")
+			|| !ft_chr_in_set(vault->map[i + 1][j], " 1\n")
+			|| !ft_chr_in_set(vault->map[i - 1][j], " 1\n")))
+					return (1);
 			else if (ft_chr_in_set(vault->map[i][j], "NSWE"))
 			{
 				vault->init_x = j;
