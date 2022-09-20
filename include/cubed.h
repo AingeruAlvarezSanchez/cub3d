@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:59:47 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/20 13:29:13 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/20 18:09:37 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define RIGHT_D_D          2
 # define LEFT_A_Q           0
 
+# define ENOTXPM "File has not an xpm extension"
 
 typedef struct s_file
 {
@@ -64,6 +65,8 @@ typedef struct  s_ray
     double      planX;
     double      planY;
     double      rayDirX;
+	double		oldDirX;
+	double		oldPlaneX;
     double      rayDirY;
     double      cameraX;
     int         mapX;
@@ -151,7 +154,7 @@ void        ft_init(t_vault *vault);
 
 int         ft_raycast(t_vault *vault);
 int         ft_draw(t_vault *vault);
-void        ft_texture(t_vault *vault);
+int        ft_texture(t_vault *vault);
 void        ft_texture_adress(t_vault *vault);
 int         ft_key_press(int keycode, t_vault *vault);
 int         ft_key_release(int keycode, t_vault *vault);
@@ -160,13 +163,15 @@ void        ft_draw_text(t_vault *vault, int x, int y);
 void        ft_init_2(t_vault *vault);
 void        ft_init_3(t_vault *vault);
 void        ft_init_texture(t_vault *vault);
-void        ft_sideDist(t_vault *vault);
+void        ft_sidedist(t_vault *vault);
 void        ft_ray_inc(t_vault *vault);
-void        ft_drawStartE(t_vault *vault);
+void        ft_drawstarte(t_vault *vault);
 void        ft_magic(t_vault *vault);
 void        ft_forward_back(t_vault *vault);
 void        ft_left_right(t_vault *vault);
 void        ft_rotate_right_left(t_vault *vault);
+void		ft_r_right(t_vault *vault);
+void		ft_r_left(t_vault *vault);
 void        ft_error(t_vault *vault, char *str);
 int         ft_exit(t_vault *vault);
 

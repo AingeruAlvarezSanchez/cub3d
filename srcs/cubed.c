@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:38:28 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/19 13:17:27 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:18:25 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(int argc, char **argv)
 	if (ft_file_errors(&file, &vault, &color))
 		return (close(file.file_fd), free(file.file), 1);
 	close(file.file_fd);
-	ft_start(&vault);
+	if (ft_start(&vault))
+		return (ft_freedata(&vault), 1);
 	ft_freedata(&vault);
 	return (0);
 }

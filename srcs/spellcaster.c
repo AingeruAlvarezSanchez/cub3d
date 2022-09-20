@@ -6,7 +6,7 @@
 /*   By: adel-cor <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:42:18 by adel-cor          #+#    #+#             */
-/*   Updated: 2022/09/19 13:49:13 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:51:18 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int     ft_start(t_vault *vault)
 	}
     ft_init(vault);
     ft_color_res(vault);
-    ft_draw(vault);
+    if (ft_draw(vault))
+		return (1);
     return (0);
 }
 
