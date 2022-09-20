@@ -4,7 +4,7 @@ NAME = cub3D
 # COMPILATION RELATED VARIABLES #
 CC = clang
 RM = rm -rf
-CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g3
 SANITIZE = -fsanitize=address
 #################################
 
@@ -20,6 +20,7 @@ FILES = srcs/cubed.c					\
 		srcs/errors.c					\
 		srcs/map_initial_errors.c		\
 		srcs/create_map.c				\
+		srcs/map_limits.c				\
 		srcs/textures_initial_errors.c	\
 		srcs/color_initial_errors.c		\
 		srcs/utils.c					\

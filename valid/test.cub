@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./textures/red.xpm
+SO ./textures/bluestone.xpm
+WE ./textures/greystone.xpm
+EA ./textures/eagle.xpm
 
 F 255,12,1
 C 240,200,255

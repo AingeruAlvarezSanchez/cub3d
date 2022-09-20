@@ -1,12 +1,12 @@
        F       220,100,0
-    NO ./path_to_the_north_texture
-      SO ./path_to_the_south_texture
-          WE          ./path_to_the_west_texture
+    NO ./textures/red.xpm
+      SO ./textures/bluestone.xpm
+          WE          ./textures/greystone.xpm
    C 225,30,0
 
 
 
-               EA ./path_to_the_east_texture
+               EA ./textures/eagle.xpm
 
 
         1111111111111111111111111

@@ -136,6 +136,7 @@ int		ft_file_errors(t_file *file, t_vault *vault, t_color *color);
 int		ft_fill_data(t_vault *vault, char *line);
 int		ft_invalidmap_line(char **file_content);
 int		ft_create_map(t_vault *vault, char **file_content);
+int		ft_checklimits(t_vault *vault, int i, int j);
 int		ft_invalidcolor_line(t_vault *vault, t_color *color, char **content);
 char	*ft_get_next_line(int fd);
 
