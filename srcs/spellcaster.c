@@ -24,6 +24,9 @@ int     ft_start(t_vault *vault)
 		vault->map[i] = ft_strdup(tmp);
 		free(tmp);
 	}
+	int check = -1;
+	while (vault->map[++check])
+		printf("map: %s\n", vault->map[check]);
     ft_init(vault);
     ft_color_res(vault);
     if (ft_draw(vault))
