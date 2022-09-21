@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:45:21 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/21 00:53:25 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:55:58 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static int	ft_isvalid_line(const char *line)
 				return (0);
 			return (1);
 		}
+		if (*line != '\n' && *line != ' ')
+			return (1);
 		line++;
 	}
 	return (0);

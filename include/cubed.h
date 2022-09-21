@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:59:47 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/20 20:01:17 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:27:18 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,6 @@ void	ft_rotate_right_left(t_vault *vault);
 void	ft_r_right(t_vault *vault);
 void	ft_r_left(t_vault *vault);
 void	ft_error(t_vault *vault, char *str);
-int		ft_exit(t_vault *vault);
+int		ft_exit_game(t_vault *vault);
 
 #endif

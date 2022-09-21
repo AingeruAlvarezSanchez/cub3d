@@ -6,7 +6,7 @@
 /*   By: adel-cor <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 13:00:50 by adel-cor          #+#    #+#             */
-/*   Updated: 2022/09/20 19:46:11 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:30:00 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_swap(int *a, int *b)
 void	ft_color_res(t_vault *vault)
 {
 	vault->rx = 1920;
-	vault->ry = 1080; //TODO en el subject de la correccion dice que esto lo tiene que poner el usuario(?) PREGUNTAR
+	vault->ry = 1080;
 }
 
 void	ft_init(t_vault *vault)

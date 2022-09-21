@@ -27,7 +27,6 @@ FILES = srcs/cubed.c					\
 		srcs/get_next_line.c			\
 		srcs/color_resolution_init.c	\
 		srcs/draw.c						\
-		srcs/hangman.c					\
 		srcs/keys.c						\
 		srcs/spellcaster.c				\
 		srcs/thundercaster.c			\

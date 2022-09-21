@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 01:05:27 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/20 20:00:11 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:03:26 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,9 @@ int	ft_invalidcolor_line(t_vault *vault, t_color *color, char **content)
 			if (ft_color_values(vault, color, ft_strtrim(tmp, "C "), 2))
 				return (free(tmp), 1);
 		}
+		free(tmp);
 	}
 	if (vault->floor == -1 || vault->ceiling == -1)
-		return (1);
-	return (free(tmp), 0);
+		return (free(tmp), 1);
+	return (0);
 }

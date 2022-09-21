@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 01:12:06 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/20 20:01:48 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:43:44 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,6 @@ int	ft_create_map(t_vault *vault, char **file_content)
 		free(tmp);
 	}
 	if (ft_parse_map(vault))
-		return (1);
-	return (0);
+		return (free(tmp), 1);
+	return (free(tmp), 0);
 }

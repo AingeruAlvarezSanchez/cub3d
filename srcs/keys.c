@@ -6,7 +6,7 @@
 /*   By: adel-cor <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:40:54 by adel-cor          #+#    #+#             */
-/*   Updated: 2022/09/20 19:55:49 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:26:21 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_key_press(int keycode, t_vault *vault)
 	else if (keycode == ROTATE_RIGHT)
 		vault->data.rotate_right = 1;
 	else if (keycode == 53)
-		ft_exit(vault);
+		ft_exit_game(vault);
 	return (1);
 }
 
