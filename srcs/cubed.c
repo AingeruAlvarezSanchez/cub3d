@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 13:38:28 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/21 12:00:51 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:59:37 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main(int argc, char **argv)
 	file.file_fd = open(argv[1], O_RDONLY);
 	file.file_size = ft_getfile_size(file.file_fd);
 	close(file.file_fd);
-	if (!file.file_size)
-		return (1);
+	if (!file.file_size || file.file_size == 1)
+		return (printf("Error : %s\n", strerror(22)), 1);
 	file.file = ft_strdup(argv[1]);
 	file.file_fd = open(file.file, O_RDONLY);
 	if (ft_file_errors(&file, &vault, &color))
@@ -36,6 +36,5 @@ int	main(int argc, char **argv)
 	close(file.file_fd);
 	if (ft_start(&vault))
 		return (ft_freedata(&vault), 1);
-	ft_freedata(&vault);
 	return (0);
 }

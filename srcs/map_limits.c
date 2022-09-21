@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 00:46:04 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/21 00:46:05 by aalvarez         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:06:48 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,22 @@ static int	ft_limits_0(t_vault *vault, int i, int j)
 	return (0);
 }
 
+static int	ft_limits_init_pos(t_vault *vault, int i, int j)
+{
+	if (ft_chr_in_set(vault->map[i][j], "NSWE"))
+		if (!ft_chr_in_set(vault->map[i][j + 1], "01")
+			|| !ft_chr_in_set(vault->map[i][j - 1], "01")
+			|| !ft_chr_in_set(vault->map[i + 1][j], "01")
+			|| !ft_chr_in_set(vault->map[i - 1][j], "01"))
+			return (1);
+	return (0);
+}
+
 int	ft_checklimits(t_vault *vault, int i, int j)
 {
 	if (ft_limits_0(vault, i, j))
+		return (1);
+	if (ft_limits_init_pos(vault, i, j))
 		return (1);
 	if (ft_map_limits(vault) && ((vault->map[i][j] == ' '
 			&& (ft_strlen(vault->map[i])
