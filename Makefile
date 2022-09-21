@@ -34,7 +34,27 @@ FILES = srcs/cubed.c					\
 		srcs/thundercaster_move.c		\
 		srcs/thundercaster_utils.c		\
 
+FILES_BONUS = Bonus/cubed_bonus.c				\
+		Bonus/errors_bonus.c					\
+		Bonus/map_initial_errors_bonus.c		\
+		Bonus/create_map_bonus.c				\
+		Bonus/map_limits_bonus.c				\
+		Bonus/textures_initial_errors_bonus.c	\
+		Bonus/color_initial_errors_bonus.c		\
+		Bonus/utils_bonus.c						\
+		Bonus/get_next_line_bonus.c				\
+		Bonus/color_resolution_bonus.c			\
+		Bonus/draw_bonus.c						\
+		Bonus/keys_bonus.c						\
+		Bonus/spellcaster_bonus.c				\
+		Bonus/thundercaster_bonus.c				\
+		Bonus/thundercaster_init_bonus.c		\
+		Bonus/thundercaster_move_bonus.c		\
+		Bonus/thundercaster_utils_bonus.c		\
+
+
 OBJS = $(FILES:%.c=%.o)
+OBJS_BONUS = $(FILES_BONUS:%.c=%.o)
 #################################
 
 #### COLOR RELATED VARIABLES ####
@@ -71,9 +91,10 @@ export WELCOME_TO_HELL3
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	$(RM) $(OBJS_BONUS:Bonus/%=%)
+	$(RM) cub3D_bonus
 	echo "⏳  $(BLUE)Starting to create Executables$(END)  ⏳"
 	$(MAKE) -C $(MINILIB) 2> logs
-#	./loading_screen.sh
 	echo "✅  $(GREEN)MinilibX Correctly Compiled$(END)  ✅"
 	$(MAKE) -C $(LIBFT) ext
 	echo "✅  $(GREEN)Libft Correctly Compiled$(END)  ✅"
@@ -86,6 +107,26 @@ $(NAME): $(OBJS)
 	echo "Compilation flags were: $(CFLAGS)"
 	$(RM) logs
 
+bonus: $(OBJS_BONUS)
+	$(RM) $(OBJS)
+	$(RM) $(NAME)
+	echo "⏳  $(BLUE)Starting to create Executables$(END)  ⏳"
+	$(MAKE) -C $(MINILIB) 2> logs
+	echo "✅  $(GREEN)MinilibX Correctly Compiled$(END)  ✅"
+	$(MAKE) -C $(LIBFT) ext
+	echo "✅  $(GREEN)Libft Correctly Compiled$(END)  ✅"
+	$(CC) $(CFLAGS) $(OBJS_BONUS:Bonus/%=%) $(LIBFT)libft.a -L $(MINILIB) $(FRAMEWORK) -o cub3D_bonus
+	echo "🎊  $(GREEN)Cub3d project correctly compiled$(END)  🎊"
+	clear
+	echo "$(BLACK)$$WELCOME_TO_HELL1$(END)"
+	echo "$(BLACK)$$WELCOME_TO_HELL2$(END)"
+	echo "$(RR)$$WELCOME_TO_HELL3$(END)"
+	echo "Compilation flags were: $(CFLAGS)"
+	$(RM) logs
+
+$(OBJS_BONUS): $(FILES_BONUS)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $^
+
 .c.o: $(FILES) $(INCLUDE)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@
 
@@ -94,11 +135,13 @@ clean:
 	$(MAKE) -C $(MINILIB) clean
 	$(MAKE) -C $(LIBFT) clean
 	$(RM) $(OBJS)
+	$(RM) $(OBJS_BONUS:Bonus/%=%)
 	echo "✅  $(GREEN)Objects correctly purged$(END)  ✅"
 
 fclean: clean
 	echo "🔥  $(RED)Starting to purge executable$(END)  🔥"
 	$(RM) $(NAME)
+	$(RM) cub3D_bonus
 	$(RM) $(MINILIB)libmlx.a
 	$(RM) $(LIBFT)libft.a
 	echo "✅  $(GREEN)Executable correctly purged$(END)  ✅"

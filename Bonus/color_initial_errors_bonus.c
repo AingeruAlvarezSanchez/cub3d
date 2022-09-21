@@ -6,7 +6,7 @@
 /*   By: aalvarez <aalvarez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 01:05:27 by aalvarez          #+#    #+#             */
-/*   Updated: 2022/09/21 12:03:26 by adel-cor         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:01:00 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,16 +88,14 @@ int	ft_invalidcolor_line(t_vault *vault, t_color *color, char **content)
 		tmp = ft_strtrim(content[i], " \n");
 		if (*tmp == 'F')
 		{
-			if (color->floor_integer != -1)
-				return (free(tmp), 1);
-			if (ft_color_values(vault, color, ft_strtrim(tmp, "F "), 1))
+			if ((color->floor_integer != -1)
+				|| (ft_color_values(vault, color, ft_strtrim(tmp, "F "), 1)))
 				return (free(tmp), 1);
 		}
 		if (*tmp == 'C')
 		{
-			if (color->ceiling_integer != -1)
-				return (free(tmp), 1);
-			if (ft_color_values(vault, color, ft_strtrim(tmp, "C "), 2))
+			if ((color->ceiling_integer != -1)
+				|| (ft_color_values(vault, color, ft_strtrim(tmp, "C "), 2)))
 				return (free(tmp), 1);
 		}
 		free(tmp);
